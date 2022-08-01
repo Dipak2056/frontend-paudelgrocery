@@ -1,0 +1,62 @@
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  padding: 2%;
+}
+.footer-body {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.footer-body > .footer-item:hover {
+  background-color: gray;
+  color: black;
+}
+.footer-item {
+  width: 80%;
+  margin: 0 auto;
+}
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+}
+.social-media-icons > .sm-icon:hover {
+  cursor: pointer;
+  color: blue;
+}
+.sm-icon {
+  margin: 0 2em;
+}
+@media screen and (max-width: 600px) {
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+  }
+  .advice-of-day {
+    flex-direction: column;
+    text-align: center;
+    padding: 2%;
+  }
+  .footer-body {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.advice-of-day {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  gap: 2em;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+.advice-image img {
+  height: 100px;
+  width: 100px;
+  border: 1px solid red;
+  border-radius: 50%;
+}

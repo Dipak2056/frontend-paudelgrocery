@@ -1,0 +1,17 @@
+.search-login {
+  display: flex;
+  background-color: red;
+  color: white;
+}
+@media screen and (max-width: "600px") {
+  .search-login {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .search-bar {
+    order: -1;
+  }
+  .login {
+    order: -2;
+  }
+}
