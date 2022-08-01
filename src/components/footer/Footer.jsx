@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.css";
-import { Accordion } from "react-bootstrap";
 
 const Footer = () => {
   return (
@@ -32,7 +31,7 @@ const Footer = () => {
               <div className="advice-image">
                 <img
                   src="https://i.pinimg.com/originals/d1/11/43/d11143e71df51f4b4c15b8379ffea8ab.jpg"
-                  alt="grocery image"
+                  alt="grocery"
                 />
               </div>
               <div className="advice-text">

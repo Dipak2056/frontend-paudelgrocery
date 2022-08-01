@@ -1,0 +1,16 @@
+.carousels {
+  margin-top: 2em;
+  min-width: 40vh;
+  border-radius: 20px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.carousel-button {
+  width: 40%;
+  height: 10%;
+  padding: 1px;
+  border: 4px solid grey;
+  background-color: white;
+  border-radius: 15px;
+  color: green;
+}
