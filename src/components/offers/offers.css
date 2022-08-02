@@ -13,5 +13,14 @@
 }
 .offer-card-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 2em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 10px;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.offer-card-section::-webkit-scrollbar {
+  display: none;
 }

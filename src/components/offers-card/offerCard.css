@@ -1,6 +1,23 @@
 .offerCard {
-  width: 20vw;
-  height: 10vh;
-  background-color: white;
-  color: green;
+  width: 200px;
+  border: 1px solid green;
+  background-color: green;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 1em 0;
+  cursor: pointer;
+  box-shadow: 1px 2px 1px 0px rgba(7, 11, 10, 0.61);
+  padding: 5px;
+  font-size: 1em;
+}
+
+.offerCard:hover {
+  box-shadow: 1px 12px 15px 0px rgba(7, 11, 10, 0.61);
+  transform: translate(2px, 1px);
+}
+.offer-icon {
+  font-size: 1em;
 }

@@ -1,0 +1,15 @@
+.special-item-section {
+  background-color: rgb(208, 201, 201);
+  margin-top: 1em;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+  box-shadow: 2px 4px rgb(200, 200, 200);
+  overflow: scroll;
+}
+.special-item-section::-webkit-scrollbar {
+  display: none;
+}

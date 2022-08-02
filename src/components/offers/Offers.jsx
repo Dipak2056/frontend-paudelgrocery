@@ -10,6 +10,7 @@ export const OfferComponent = () => {
         <OfferCard />
         <OfferCard />
         <OfferCard />
+        <OfferCard />
       </div>
     </div>
   );

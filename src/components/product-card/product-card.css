@@ -1,0 +1,11 @@
+.product-card {
+  height: 250px;
+  min-width: 60%;
+  margin: auto 2%;
+  background-color: green;
+  border: solid grey;
+}
+.product-card img {
+  width: 100%;
+  height: 60%;
+}

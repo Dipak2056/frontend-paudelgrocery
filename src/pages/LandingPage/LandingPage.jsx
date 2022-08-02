@@ -2,6 +2,7 @@ import React from "react";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { CarouselComponent } from "../../components/carousels/Carousels";
 import { OfferComponent } from "../../components/offers/Offers";
+import { SpecialItemComponent } from "../../components/special/SpecialItem";
 
 const LandingPage = () => {
   return (
@@ -10,6 +11,7 @@ const LandingPage = () => {
         <div className="landing-page-body p-2">
           <CarouselComponent />
           <OfferComponent />
+          <SpecialItemComponent />
         </div>
       </DefaultLayout>
     </div>
