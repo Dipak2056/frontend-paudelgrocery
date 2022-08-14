@@ -1,11 +1,23 @@
 .product-card {
-  height: 250px;
-  min-width: 60%;
+  min-width: 40%;
+  padding: 10px;
   margin: auto 2%;
-  background-color: green;
   border: solid grey;
+  text-align: center;
+  border-radius: 5%;
 }
 .product-card img {
   width: 100%;
-  height: 60%;
+}
+.shop-now-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+.shop-now-button button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
 }

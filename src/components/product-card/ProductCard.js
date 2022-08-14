@@ -15,7 +15,9 @@ export const ProductCard = () => {
         <div className="product-description">Very good product</div>
       </div>
       <div className="product-card-footer">
-        <div className="shop-now-button"></div>
+        <div className="shop-now-button">
+          <button>Shop Now</button>
+        </div>
       </div>
     </div>
   );
