@@ -10,21 +10,27 @@
   padding: 20px;
   margin-bottom: 2em;
   text-align: center;
+  justify-content: center;
 }
 .section__body {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .section__body > .product-card {
   margin: 10px 20px;
+  max-width: 30%;
 }
 @media screen and (max-width: 600px) {
   .landing__page--product--section {
     flex-direction: column;
     flex-wrap: wrap;
   }
+  .section__body {
+    flex-direction: column;
+  }
 
   .section__body > .product-card {
-    width: 100%;
+    max-width: 100%;
   }
 }

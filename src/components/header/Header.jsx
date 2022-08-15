@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown, Form } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
+import "./header.css";
 const Header = () => {
   return (
     <Navbar
@@ -11,16 +12,20 @@ const Header = () => {
       className="navbar"
     >
       <Container>
-        <Navbar.Brand href="#home">Paudel grocery</Navbar.Brand>
+        <Navbar.Brand href="/">Paudel grocery</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Hot Deals</Nav.Link>
-            <Nav.Link href="#products">Our Products </Nav.Link>
+            <Nav.Link href="/hot-deals">Hot Deals</Nav.Link>
+            <Nav.Link href="/products">Our Products </Nav.Link>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Fruits</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Vegetables</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/products/fruits">
+                Fruits
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/products/vegetables">
+                Vegetables
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/products/fresh-produce">
                 Fresh produce
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Other</NavDropdown.Item>
@@ -39,6 +44,14 @@ const Header = () => {
                 Login/signin
               </div>
             </Nav.Link>
+          </Nav>
+          <Nav className="cart">
+            <Link to="/cart">
+              <span className="cart">
+                <i className="fa-solid fa-cart-shopping"></i>
+                <span className="cart__length">12</span>
+              </span>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

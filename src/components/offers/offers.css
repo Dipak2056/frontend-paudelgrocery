@@ -13,7 +13,7 @@
 }
 .offer-card-section {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   gap: 2em;
   overflow-x: scroll;
   overflow-y: hidden;

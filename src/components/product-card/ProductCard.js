@@ -18,6 +18,11 @@ export const ProductCard = () => {
         <div className="shop-now-button">
           <button>Shop Now</button>
         </div>
+        <div className="shop-now-button">
+          <button>
+            Add to cart <i className="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
       </div>
     </div>
   );
