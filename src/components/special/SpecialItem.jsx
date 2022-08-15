@@ -4,10 +4,10 @@ import { ProductCard } from "../product-card/ProductCard";
 
 export const SpecialItemComponent = () => {
   return (
-    <div className="special-item-section">
+    <section className="special-item-section">
       <ProductCard />
       <ProductCard />
       <ProductCard />
-    </div>
+    </section>
   );
 };
