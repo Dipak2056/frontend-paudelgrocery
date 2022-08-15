@@ -24,6 +24,12 @@ const ProductsPage = () => {
             <ProductCard />
             <ProductCard />
             <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </section>
         </section>
       </div>
