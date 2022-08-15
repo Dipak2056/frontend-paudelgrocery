@@ -1,5 +1,5 @@
 .product-card {
-  min-width: 40%;
+  max-width: 300px;
   padding: 10px;
   margin: 2%;
   border: solid grey;
@@ -21,6 +21,7 @@
   background-color: green;
   color: white;
   margin: 10px;
+  width: 100px;
 }
 .shop-now-button button:hover {
   transform: translateX(1px);
