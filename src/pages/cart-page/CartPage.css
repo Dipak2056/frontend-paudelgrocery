@@ -1,12 +1,3 @@
-.cart__page {
-  background-color: rgba(111, 228, 123, 0.316);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2%;
-  border-radius: 10px;
-  padding: 10%;
-}
 .cart__body {
   display: flex;
   flex-direction: column;
@@ -15,17 +6,17 @@
 .cart__page--container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(111, 228, 123, 0.141);
+  padding-top: 10%;
+  padding-bottom: 5%;
+  padding-left: 100px;
+  padding-right: 100px;
 }
-figure {
-  max-width: 400px;
-}
+
 figure > img {
   width: 100%;
 }
 .cart__empty--img {
-  max-width: 400px;
   min-height: 20vh;
 }
 .cart-btn {
@@ -44,4 +35,89 @@ figure > img {
 }
 .main {
   min-height: 100%;
+}
+
+/* table design */
+.cart__table {
+  background-color: rgba(111, 228, 123, 0.316);
+  box-shadow: 0 4px 8px 0 rgb(58 71 78 / 10%);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.cart__table--header,
+.cart__table--body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart__table--header {
+  color: white;
+  background: #407006;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px 10px;
+}
+.cart__table--body {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.cart__table--body--product--qty {
+  text-align: left;
+  width: 33%;
+}
+.product__remove {
+  border: 1px solid red;
+  border-radius: 5px;
+  text-align: center;
+  color: red;
+}
+.product__remove:hover {
+  border: 1px solid red;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+.product--qty--number {
+  width: 50%;
+}
+.cart__table--body--product--desc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 33%;
+}
+.product__img {
+  height: 100px;
+  width: 100px;
+}
+.cart__table--footer {
+  align-self: flex-end;
+  width: 30%;
+}
+.cart__table--footer--subtotal,
+.cart__table--footer--tax,
+.cart__table--footer--total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.subtotal,
+.tax,
+.total {
+  font-size: 18px;
+  font-weight: 200;
+  color: gray;
+}
+@media screen and (max-width: 768px) {
+  .cart__page--container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .cart__body > .cart__table {
+    max-width: 600px;
+  }
+  .cart__body.cart__empty--img {
+    max-width: 600px;
+  }
 }
