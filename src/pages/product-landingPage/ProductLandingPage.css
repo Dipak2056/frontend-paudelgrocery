@@ -1,0 +1,19 @@
+.productLanding__main {
+  padding-top: 10%;
+  min-height: 70vh;
+  margin: 50px auto;
+  border-radius: 15px;
+  padding: 100px;
+}
+.productlanding__card {
+  display: flex;
+}
+.product__landing--description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+.product__landing--product--title {
+  font-weight: bold;
+}
