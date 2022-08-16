@@ -1,28 +1,29 @@
 .productlanding__main {
-  padding-top: 10%;
+  padding-top: 5%;
   min-height: 70vh;
   margin: 50px auto;
-  border-radius: 15px;
 }
 .productlanding__card {
   display: flex;
   box-shadow: 0 8px 12px 0 rgba(58, 71, 78, 0.81);
-  background-color: rgb(58 71 78 / 20%);
+  background-color: rgba(150, 161, 123, 0.2);
   padding: 10px;
   border-radius: 10px;
   max-width: 768px;
   margin: 0 auto;
+  margin-bottom: 100px;
   justify-content: space-between;
 }
 .second--card {
   max-width: 1024px;
   display: flex;
   flex-direction: column;
-  margin: 15px;
+  margin-top: 15px;
   text-align: center;
 }
 .second--card--product__cards {
   display: flex;
+  flex-wrap: wrap;
 }
 .productlanding--img {
   max-width: 100%;
@@ -72,10 +73,17 @@
     display: flex;
     flex-direction: column;
     max-width: 80%;
-    margin: 0 auto;
+    margin: 5 auto 15 auto;
     justify-content: space-between;
   }
-  .second--card--product__cards {
-    flex-direction: column;
+  .productlanding--img > img {
+    max-height: 150px;
+  }
+  .productlanding--description--smallimg {
+    height: 70px;
+    width: 70px;
+  }
+  .second--card--product__cards > .product__card {
+    max-width: 40%;
   }
 }

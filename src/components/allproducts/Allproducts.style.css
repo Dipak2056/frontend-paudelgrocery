@@ -5,12 +5,11 @@
   flex-direction: column;
   flex-wrap: wrap;
   box-shadow: 2px 4px rgb(200, 200, 200);
-  margin-top: 2em;
   border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 2em;
+  padding: 10px;
   text-align: center;
   justify-content: center;
+  margin: 10px;
 }
 .section__body {
   display: flex;
@@ -20,16 +19,19 @@
 .section__body > .product__card {
   margin: 10px 20px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .all__products--section > h1 {
+    font-size: 24px;
+  }
+  .search--and--sort > h2 + select {
+    font-size: 16px;
+  }
   .landing__page--product--section {
     flex-direction: column;
     flex-wrap: wrap;
   }
-  .section__body {
-    flex-direction: column;
-  }
 
-  .section__body > .product-card {
-    max-width: 100%;
+  .section__body > .product__card {
+    max-width: 40%;
   }
 }

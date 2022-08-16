@@ -12,6 +12,9 @@ export const ProductCard = () => {
             alt="product"
           />
         </div>
+        <div className="product__card--product--name align-center">
+          <strong>The Nivea total repair 5</strong>
+        </div>
         <div className="product__card--description">
           <strong>Description:</strong> Very good product with highest review in
           the store, that is definetely gonna blow your mind.
