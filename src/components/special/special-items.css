@@ -19,3 +19,6 @@
 .special-item-section::-webkit-scrollbar {
   display: none;
 }
+.special-item-section > .product__card {
+  min-width: 40%;
+}
