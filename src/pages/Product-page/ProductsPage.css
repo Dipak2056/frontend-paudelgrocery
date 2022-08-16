@@ -1,48 +1,91 @@
 .all__product {
   display: flex;
   width: 100%;
+  padding-top: 8%;
+  background-color: rgb(238, 238, 238);
 }
 .all__products--select--section {
-  padding: 20px;
-  border: 1px solid red;
+  min-width: 15%;
+  padding-top: 10%;
   border-radius: 5px;
-  margin: 1px;
-  background-color: aquamarine;
+  margin-top: -5%;
+  color: #178841;
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid #178841;
+  -webkit-box-shadow: 6px 0px 16px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 6px 0px 16px 0px rgba(0, 0, 0, 0.45);
 }
 .all__products--select--section > ul > li {
   list-style-type: none;
-  border: 1px solid red;
-  margin: 5px auto;
-
   width: 100%;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 .all__categories--list {
-  background-color: aquamarine;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 10px;
+  padding-top: 25%;
 }
 .all__products--select--section > ul > li:hover {
-  border: 1px solid red;
-  background-color: aquamarine;
   cursor: pointer;
   margin: 15px auto;
-  box-shadow: 20px 20px 50px 15px grey;
+  background-color: #3a474e;
+  color: white;
+  padding: 5px;
 }
 .all__products--select--section > h3 {
-  border: 1px solid red;
   text-align: center;
 }
+
 .all__products--section {
   display: flex;
   flex-direction: column;
-  background-color: rgba(158, 211, 78, 0.406);
+  background-color: rgba(194, 40, 40, 0);
   margin-bottom: 10px;
+  text-align: center;
 }
 .all__products--productsection {
   display: flex;
+  height: 80vh;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: rgba(194, 40, 40, 0);
   overflow-y: scroll;
+}
+.all__products--productsection > .product__card {
+  width: 100%;
+}
+.all__products--productsection::-webkit-scrollbar {
+  display: none;
+}
+.selection--header {
+  background-color: #3a474e;
+  color: white;
+}
+.search--and--sort {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.sortby {
+  font-size: 24px;
+  color: #3a474e;
+}
+.sortby > select {
+  width: 200px;
+  border: 1px solid #178841;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  .all__products--select--section > ul > li {
+    font-size: 8px;
+    font-weight: normal;
+  }
+  .all__products--select--section {
+    display: none;
+  }
 }

@@ -10,6 +10,9 @@ export const SpecialItemComponent = () => {
         <ProductCard />
         <ProductCard />
         <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </section>
     </section>
   );

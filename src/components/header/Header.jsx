@@ -9,7 +9,7 @@ const Header = () => {
       expand="lg"
       bg="dark"
       variant="dark"
-      className="navbar"
+      className="navbar fixed-top"
     >
       <Container>
         <Navbar.Brand href="/">Paudel grocery</Navbar.Brand>
