@@ -24,3 +24,8 @@
 .offer-card-section::-webkit-scrollbar {
   display: none;
 }
+@media screen and (max-width: 768px) {
+  .offer-card-section {
+    justify-content: flex-start;
+  }
+}
