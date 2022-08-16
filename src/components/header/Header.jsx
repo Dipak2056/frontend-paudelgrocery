@@ -12,18 +12,40 @@ const Header = () => {
       className="navbar fixed-top"
     >
       <Container>
-        <Navbar.Brand href="/">Paudel grocery</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Paudel grocery
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/hot-deals">Hot Deals</Nav.Link>
-            <Nav.Link href="/products">Our Products </Nav.Link>
+            <Nav>
+              <Link
+                to="/products"
+                style={{ textDecoration: "none", color: "grey" }}
+              >
+                Our Products
+              </Link>
+            </Nav>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/products/fruits">
-                Fruits
+              <NavDropdown.Item>
+                <Link
+                  to="/products/fruits"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Fruits
+                </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="/products/vegetables">
-                Vegetables
+
+              <NavDropdown.Item>
+                <Link
+                  to="/products/vegetables"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Vegetables
+                </Link>
               </NavDropdown.Item>
               <NavDropdown.Item href="/products/fresh-produce">
                 Fresh produce
@@ -40,7 +62,7 @@ const Header = () => {
             </Nav.Link>
             <Nav.Link>
               <div className="login pt-1">
-                <i class="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 Login/signin
               </div>
             </Nav.Link>

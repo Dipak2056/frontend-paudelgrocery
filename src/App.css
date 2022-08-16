@@ -9,3 +9,7 @@
   min-height: 80vh;
   padding: 5px;
 }
+Link {
+  text-decoration: none;
+  color: black;
+}

@@ -72,8 +72,8 @@
   .productlanding__card {
     display: flex;
     flex-direction: column;
-    max-width: 80%;
-    margin: 5 auto 15 auto;
+    max-width: 90%;
+    margin: 5px;
     justify-content: space-between;
   }
   .productlanding--img > img {

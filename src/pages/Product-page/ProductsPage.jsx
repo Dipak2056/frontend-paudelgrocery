@@ -36,9 +36,7 @@ const ProductsPage = () => {
               <span className="sortby">
                 sort product by:
                 <select>
-                  <option value="default">
-                    <i className="fa-solid fa-arrow-down-1-9">select</i>
-                  </option>
+                  <option value="default">sort by</option>
                   <option value="price">Price</option>
                   <option value="product">Product</option>
                   <option value="latest">Latest</option>
