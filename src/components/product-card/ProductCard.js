@@ -8,10 +8,11 @@ export const ProductCard = ({
   rating,
   description,
   price,
+  category,
 }) => {
   return (
     <div className="product__card">
-      <div className="product__card--header">special buys</div>
+      <div className="product__card--header">{category ? category : ""}</div>
       <div className="product__card--body">
         <div className="product--image">
           <img src={image} alt="product" />

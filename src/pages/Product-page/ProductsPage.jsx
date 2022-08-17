@@ -6,6 +6,7 @@ import "./ProductsPage.css";
 
 const ProductsPage = () => {
   const { categories } = useSelector((state) => state.category);
+  const { products } = useSelector((state) => state.product);
 
   return (
     <DefaultLayout>
@@ -52,15 +53,16 @@ const ProductsPage = () => {
           <hr />
 
           <section className="all__products--productsection">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                title={product.title}
+                image={product.image}
+                price={product.price}
+                description={product.description}
+                rating={product.rating.rate}
+              />
+            ))}
           </section>
         </section>
       </div>

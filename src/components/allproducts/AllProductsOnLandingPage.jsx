@@ -46,7 +46,7 @@ const AllProductsOnLandingPage = ({ products }) => {
           >
             <span>
               {" "}
-              Browse more{" "}
+              Go to Top{" "}
               <i className="fa-solid fa-circle-arrow-up fa-bounce"></i>{" "}
             </span>
           </div>
