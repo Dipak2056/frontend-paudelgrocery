@@ -5,7 +5,7 @@ export const OfferCard = () => {
   return (
     <div className="offerCard">
       <div className="offer-icon">
-        <i class="fa-solid fa-truck"></i>
+        <i className="fa-solid fa-truck"></i>
       </div>
       <div className="offer-title">Home Delivery</div>
     </div>

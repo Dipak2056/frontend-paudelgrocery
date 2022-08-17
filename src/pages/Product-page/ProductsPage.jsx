@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import "./ProductsPage.css";
 
+import { fetchProductsAction } from "../LandingPage/products.action";
+
 const ProductsPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductsAction());
+  }, []);
   const { categories } = useSelector((state) => state.category);
   const { products } = useSelector((state) => state.product);
 
@@ -56,6 +63,7 @@ const ProductsPage = () => {
             {products.map((product) => (
               <ProductCard
                 key={product.id}
+                id={product.id}
                 title={product.title}
                 image={product.image}
                 price={product.price}

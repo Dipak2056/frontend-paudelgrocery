@@ -8,8 +8,6 @@ const AllProductsOnLandingPage = ({ products }) => {
   const displayMore = () => {
     setDispProduct(dispProducts + 5);
   };
-  console.log(dispProducts);
-  console.log(products.length);
 
   return (
     <section className="landing__page--product--section">

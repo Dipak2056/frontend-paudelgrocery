@@ -6,37 +6,28 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export const SpecialItemComponent = () => {
-  const [specialCard, setSpecialCard] = useState([]);
-  const { categories } = useSelector((state) => state.category);
   const { products } = useSelector((state) => state.product);
 
-  const createSpecial = () => {
-    let specialcard = [];
-    for (let i = 0; i < categories.length; i++) {
-      specialcard.push(
-        products.filter((item) => item.category === categories[i])[0]
-      );
-    }
-    return specialcard;
-  };
-  useEffect(() => {
-    setSpecialCard(createSpecial());
-  }, []);
   return (
     <section className="special-item">
-      <h2>Special items</h2>
+      <h2>Best seller</h2>
       <section className="special-item-section">
-        {specialCard.map((item, i) => (
-          <ProductCard
-            key={i}
-            category={item.category}
-            title={item.title}
-            price={item.price}
-            description={item.description}
-            image={item.image}
-            rating={item.rating.rate}
-          />
-        ))}
+        {products
+          .filter((product) => product.rating.rate > 4)
+          .slice(0, 4)
+          .map((item, i) => (
+            <ProductCard
+              key={i}
+              id={item.id}
+              category={item.category}
+              title={item.title}
+              price={item.price}
+              description={item.description}
+              image={item.image}
+              rating={item.rating.rate}
+              ratedby={item.rating.count}
+            />
+          ))}
       </section>
     </section>
   );
