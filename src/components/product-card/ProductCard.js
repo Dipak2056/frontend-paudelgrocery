@@ -1,5 +1,6 @@
 import "./product-card.css";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({
   id,
@@ -13,11 +14,17 @@ export const ProductCard = ({
 }) => {
   return (
     <div className="product__card">
-      <div className="product__card--header">{category ? category : ""}</div>
+      {category ? <div className="product__card--header">{category}</div> : ""}
       <div className="product__card--body">
-        <div className="product--image">
-          <img src={image} alt="product" />
-        </div>
+        <Link
+          to={`/products/${id}`}
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          <div className="product--image">
+            <img src={image} alt="product" />
+          </div>{" "}
+        </Link>
+
         <div className="product__card--product--name align-center">
           <strong>{title}</strong>
         </div>
@@ -44,7 +51,13 @@ export const ProductCard = ({
       </div>
       <div className="product__card--footer">
         <div className="shop-now-button">
-          <button>Shop Now</button>
+          <Link
+            to={`/products/${id}`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            {" "}
+            <button>Shop Now</button>
+          </Link>
         </div>
         <div className="shop-now-button">
           <button>
