@@ -6,12 +6,17 @@ import { SpecialItemComponent } from "../../components/special/SpecialItem";
 import AllProductsOnLandingPage from "../../components/allproducts/AllProductsOnLandingPage";
 //redux
 //get and set all the products from server
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProductsAction } from "./products.action";
 
-import { products } from "./products";
 const LandingPage = () => {
-  // const dispatch = useDispatch();
-  // const { products } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProductsAction());
+  }, []);
   return (
     <div>
       <DefaultLayout>

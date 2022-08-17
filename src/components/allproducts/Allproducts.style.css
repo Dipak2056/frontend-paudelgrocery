@@ -15,6 +15,20 @@
 .section__body > .product__card {
   margin: 10px 20px;
 }
+.explore--more--btn {
+  color: green;
+  cursor: pointer;
+  border: 2px solid green;
+  border-radius: 15px;
+  border-color: green;
+  background-color: white;
+  padding: 5px;
+}
+.explore--more--btn:hover {
+  color: white;
+  background-color: green;
+  transition: background-color 0.5s ease;
+}
 @media screen and (max-width: 768px) {
   .all__products--section > h1 {
     font-size: 24px;

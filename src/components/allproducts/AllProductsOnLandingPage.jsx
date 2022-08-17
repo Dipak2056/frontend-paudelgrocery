@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProductCard } from "../product-card/ProductCard";
 import "./Allproducts.style.css";
+
 const AllProductsOnLandingPage = ({ products }) => {
+  const [dispProducts, setDispProduct] = useState(5);
+
+  const displayMore = () => {
+    setDispProduct(dispProducts + 5);
+  };
+  console.log(dispProducts);
+  console.log(products.length);
+
   return (
     <section className="landing__page--product--section">
       <div className="section__header">
         <h2>All Products</h2>
       </div>
       <div className="section__body">
-        {products.map((product) => {
+        {products.slice(0, dispProducts).map((product) => {
           return (
             <ProductCard
               id={product.id}
@@ -21,6 +30,27 @@ const AllProductsOnLandingPage = ({ products }) => {
             />
           );
         })}
+      </div>
+      <div className="shop-now-button">
+        {dispProducts <= 20 ? (
+          <div className="explore--more--btn" onClick={() => displayMore()}>
+            <span>
+              browse more{" "}
+              <i className="fa-solid fa-circle-arrow-down fa-bounce"></i>{" "}
+            </span>
+          </div>
+        ) : (
+          <div
+            className="explore--more--btn"
+            onClick={() => window.scrollTo({ top: 80, behavior: "smooth" })}
+          >
+            <span>
+              {" "}
+              Browse more{" "}
+              <i className="fa-solid fa-circle-arrow-up fa-bounce"></i>{" "}
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

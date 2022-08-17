@@ -9,7 +9,6 @@ export const ProductCard = ({
   description,
   price,
 }) => {
-  console.log(image);
   return (
     <div className="product__card">
       <div className="product__card--header">special buys</div>
