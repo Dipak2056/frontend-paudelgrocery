@@ -32,13 +32,26 @@
 .product__card--body {
   text-align: left;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 .product__card--description {
   margin-top: 2px;
+  height: 100px;
+  object-fit: cover;
+  overflow: auto;
+  font-size: 0.8rem;
 }
 .product__card--footer {
   display: flex;
+  justify-content: space-evenly;
+  align-self: flex-end;
 }
+.product--image > img {
+  max-height: 200px;
+  object-fit: contain;
+}
+
 @media screen and (max-width: 768px) {
   .product__card {
     font-size: 0.5em;
