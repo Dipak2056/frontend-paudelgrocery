@@ -1,8 +1,5 @@
 .offer {
-  min-height: 20vh;
   text-align: center;
-  background-color: rgba(245, 217, 217, 0.497);
-  padding-top: 2px;
   border-radius: 5px;
   color: #3a474e;
   font-family: Helvetica, Arial, sans-serif;
@@ -10,6 +7,7 @@
   box-shadow: 1px 12px 15px 0px rgba(7, 11, 10, 0.61);
   display: flex;
   flex-direction: column;
+  padding: 2px;
 }
 .offer-card-section {
   display: flex;
@@ -17,7 +15,6 @@
   gap: 2em;
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 10px;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }

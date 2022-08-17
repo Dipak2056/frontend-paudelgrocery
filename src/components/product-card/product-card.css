@@ -46,11 +46,14 @@
   }
 
   .product__card--footer {
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
   }
   .shop-now-button {
     min-width: 50px;
-    margin: 0;
+  }
+  .shop-now-button button {
+    padding: 3px;
+    margin: 3px;
   }
 }

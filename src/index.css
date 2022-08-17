@@ -38,6 +38,7 @@ code {
   background-color: green;
   color: white;
   margin: 10px;
+  padding: 5px;
   width: 100px;
 }
 .shop-now-button button:hover {
