@@ -1,9 +1,22 @@
+.special-item {
+  display: block;
+  text-align: center;
+  margin-top: 2em;
+}
 .special-item-section {
-  background-color: rgb(208, 201, 201);
+  text-align: center;
   margin-top: 1em;
-  border-radius: 15px;
-  padding: 20px;
+  display: flex;
+  overflow: scroll;
 }
 .special-item-section::-webkit-scrollbar {
   display: none;
+}
+.special-item-section > .product__card {
+  min-width: 30%;
+}
+@media screen and (max-width: 768px) {
+  .special-item-section > .product__card {
+    min-width: 50%;
+  }
 }

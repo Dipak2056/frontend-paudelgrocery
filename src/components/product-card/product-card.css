@@ -54,7 +54,7 @@
 
 @media screen and (max-width: 768px) {
   .product__card {
-    font-size: 0.5em;
+    font-size: 0.8em;
     max-width: 30%;
   }
 
@@ -68,5 +68,8 @@
   .shop-now-button button {
     padding: 3px;
     margin: 3px;
+  }
+  .product__card--description {
+    font-size: 0.5em;
   }
 }
