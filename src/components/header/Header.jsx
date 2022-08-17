@@ -1,8 +1,19 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./header.css";
+import { Link } from "react-router-dom";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoriesAction } from "../../pages/LandingPage/category.action";
+import { useEffect } from "react";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    dispatch(fetchCategoriesAction());
+  });
   return (
     <Navbar
       collapseOnSelect
@@ -30,27 +41,18 @@ const Header = () => {
               </Link>
             </Nav>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
-              <NavDropdown.Item>
-                <Link
-                  to="/products/fruits"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  Fruits
-                </Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-                <Link
-                  to="/products/vegetables"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  Vegetables
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/products/fresh-produce">
-                Fresh produce
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Other</NavDropdown.Item>
+              {categories.map((category, index) => {
+                return (
+                  <NavDropdown.Item key={index}>
+                    <Link
+                      to={`/products/${category}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      {category}
+                    </Link>
+                  </NavDropdown.Item>
+                );
+              })}
             </NavDropdown>
           </Nav>
           <Nav className="search-login">

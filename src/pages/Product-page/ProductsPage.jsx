@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import "./ProductsPage.css";
+
 const ProductsPage = () => {
+  const { categories } = useSelector((state) => state.category);
+
   return (
     <DefaultLayout>
       <div className="all__product">
@@ -10,12 +14,9 @@ const ProductsPage = () => {
         <section className="all__products--select--section">
           <h3 className="selection--header bg-warning">Select</h3>
           <ul className="all__categories--list">
-            <li>Fruits</li>
-            <li>Vegetables </li>
-            <li>Fresh Produce</li>
-            <li>Groceries</li>
-            <li>Home-ware</li>
-            <li>Other</li>
+            {categories.map((category, i) => {
+              return <li key={i}>{category}</li>;
+            })}
           </ul>
         </section>
 
@@ -26,10 +27,12 @@ const ProductsPage = () => {
               select categories
               <select className="categories__selection">
                 <option value="default">categories</option>
-                <option value="price">fruits</option>
-                <option value="product">vegetables</option>
-                <option value="latest">groceries</option>
-                <option value="other">others</option>
+
+                {categories.map((category, i) => (
+                  <option key={i} value={`${category}`}>
+                    {category}
+                  </option>
+                ))}
               </select>
             </span>
             <span className="search--and--sort">
@@ -38,7 +41,8 @@ const ProductsPage = () => {
                 <select>
                   <option value="default">sort by</option>
                   <option value="price">Price</option>
-                  <option value="product">Product</option>
+                  <option value="price">Ratings</option>
+                  <option value="product">Name</option>
                   <option value="latest">Latest</option>
                 </select>
               </span>
