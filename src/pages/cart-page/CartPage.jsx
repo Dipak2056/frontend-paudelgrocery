@@ -3,13 +3,19 @@ import DefaultLayout from "../../components/layouts/DefaultLayout";
 import "./CartPage.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "./cart.slice";
+import { addToCart, decreaseCart, removeFromCart } from "./cart.slice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
+  };
+  const handleOnDecrease = (cartItem) => {
+    dispatch(decreaseCart(cartItem));
+  };
+  const handleOnIncrease = (cartItem) => {
+    dispatch(addToCart(cartItem));
   };
   return (
     <DefaultLayout>
@@ -60,9 +66,19 @@ const CartPage = () => {
                       </div>
                     </div>
                     <div className="cart__table--body--product--qty">
-                      <button>-</button>
+                      <button
+                        className="decrease__button"
+                        onClick={() => handleOnDecrease(cartItem)}
+                      >
+                        -
+                      </button>
                       {cartItem.cartQuantity}
-                      <button>+</button>
+                      <button
+                        className="increase__button"
+                        onClick={() => handleOnIncrease(cartItem)}
+                      >
+                        +
+                      </button>
                     </div>
                     <div className="cart__table--body--product--price">
                       ${cartItem.price * cartItem.cartQuantity}
