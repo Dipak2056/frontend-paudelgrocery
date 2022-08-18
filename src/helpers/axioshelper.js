@@ -33,6 +33,6 @@ export const getAllProducts = async () => {
 
 //to get the product based on the product id
 export const getProductById = async (id) => {
-  const url = productsAPI + "/" + "id";
+  const url = productsAPI + "/" + id;
   return apiProcessor({ method: "get", url });
 };

@@ -31,6 +31,9 @@
   background-color: green;
   transition: background-color 0.5s ease;
 }
+.section__body > .product__card > .product__card--header {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .all__products--section > h1 {
     font-size: 24px;

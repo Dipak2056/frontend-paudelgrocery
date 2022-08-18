@@ -46,3 +46,9 @@ code {
   transform: scale(115%);
   box-shadow: inherit;
 }
+.section__body > .product__card > .product__card--header {
+  display: none;
+}
+.all__products--productsection > .product__card > .product__card--header {
+  display: none;
+}

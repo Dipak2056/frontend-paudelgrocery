@@ -9,11 +9,11 @@ import { useEffect } from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
-
   useEffect(() => {
     dispatch(fetchCategoriesAction());
-  });
+  }, []);
+  const { categories } = useSelector((state) => state.category);
+
   return (
     <Navbar
       collapseOnSelect
@@ -45,7 +45,7 @@ const Header = () => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link
-                      to={`/products/${category}`}
+                      to={`/products/`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       {category}

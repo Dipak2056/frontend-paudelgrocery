@@ -75,6 +75,7 @@
     min-width: 70px;
   }
   .shop-now-button button {
+    padding: 3px;
     margin: 3px;
   }
   .product__card--description {

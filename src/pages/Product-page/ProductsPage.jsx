@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { ProductCard } from "../../components/product-card/ProductCard";
@@ -8,12 +8,56 @@ import { fetchProductsAction } from "../LandingPage/products.action";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchProductsAction());
   }, []);
-  const { categories } = useSelector((state) => state.category);
   const { products } = useSelector((state) => state.product);
+  const { categories } = useSelector((state) => state.category);
+
+  const [selectedProducts, setSelectedproducts] = useState(products);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  function filterProducts(value) {
+    if (value === "DEFAULT") {
+      setSelectedproducts(
+        products
+          .slice()
+          .filter((product) => product.category === selectedCategory)
+      );
+    }
+    setSelectedproducts(products);
+    if (value === "LOW_TO_HIGH") {
+      setSelectedproducts(
+        products
+          .slice()
+          .filter((product) => product.category === selectedCategory)
+          .sort((a, b) => a.price - b.price)
+      );
+    }
+    if (value === "HIGH_TO_LOW") {
+      setSelectedproducts(
+        products
+          .slice()
+          .filter((product) => product.category === selectedCategory)
+          .sort((a, b) => b.price - a.price)
+      );
+    }
+    if (value === "RATING") {
+      setSelectedproducts(
+        products
+          .slice()
+          .filter((product) => product.category === selectedCategory)
+
+          .sort((a, b) => parseInt(b.rating.rate) - parseInt(a.rating.rate))
+      );
+    }
+  }
+  function filterCategories(value) {
+    setSelectedCategory(value);
+    setSelectedproducts(
+      products.slice().filter((product) => product.category === value)
+    );
+  }
 
   return (
     <DefaultLayout>
@@ -23,21 +67,28 @@ const ProductsPage = () => {
           <h3 className="selection--header bg-warning">Select</h3>
           <ul className="all__categories--list">
             {categories.map((category, i) => {
-              return <li key={i}>{category}</li>;
+              return (
+                <li key={i} onClick={() => filterCategories(category)}>
+                  {category}
+                </li>
+              );
             })}
           </ul>
         </section>
 
         <section className="all__products--section">
-          <h2>Showing result for "fruits" </h2>
+          <h2>Showing result for {selectedCategory} </h2>
           <div className="selection--area">
             <span>
               select categories
-              <select className="categories__selection">
-                <option value="default">categories</option>
+              <select
+                className="categories__selection"
+                onChange={(e) => filterCategories(e.target.value)}
+              >
+                <option>categories</option>
 
                 {categories.map((category, i) => (
-                  <option key={i} value={`${category}`}>
+                  <option key={i} value={category}>
                     {category}
                   </option>
                 ))}
@@ -46,12 +97,15 @@ const ProductsPage = () => {
             <span className="search--and--sort">
               <span className="sortby">
                 sort product by:
-                <select>
-                  <option value="default">sort by</option>
-                  <option value="price">Price</option>
-                  <option value="price">Ratings</option>
-                  <option value="product">Name</option>
-                  <option value="latest">Latest</option>
+                <select
+                  id="filter"
+                  defaultValue="DEFAULT"
+                  onChange={(e) => filterProducts(e.target.value)}
+                >
+                  <option value="DEFAULT">sort by</option>
+                  <option value="LOW_TO_HIGH">Price low to high</option>
+                  <option value="HIGH_TO_LOW">Price high to low</option>
+                  <option value="RATING">Rating</option>
                 </select>
               </span>
             </span>
@@ -60,7 +114,7 @@ const ProductsPage = () => {
           <hr />
 
           <section className="all__products--productsection">
-            {products.map((product) => (
+            {selectedProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 id={product.id}
@@ -69,6 +123,7 @@ const ProductsPage = () => {
                 price={product.price}
                 description={product.description}
                 rating={product.rating.rate}
+                category={product.category}
               />
             ))}
           </section>
