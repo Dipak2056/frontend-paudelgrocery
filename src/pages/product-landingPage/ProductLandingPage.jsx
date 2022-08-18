@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductLandingPage.css";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
@@ -16,8 +16,7 @@ const ProductLandingPage = () => {
 
   const { id } = useParams();
   const product = products.find((product) => +product.id === +id);
-  console.log(id);
-  console.log(products);
+  const [selectedproduct, setSelectedProduct] = useState(product);
   return (
     <DefaultLayout>
       <section className="productlanding__main">
@@ -59,9 +58,25 @@ const ProductLandingPage = () => {
           </div>
           <hr />
           <div className="second--card--product__cards">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products
+              .filter(
+                (product) =>
+                  product.rating.rate > 3 &&
+                  +product.id !== +id &&
+                  product.category === selectedproduct.category
+              )
+              .slice()
+              .map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  price={product.price}
+                  description={product.description}
+                  title={product.title}
+                  image={product.image}
+                  rating={product.rating.rate}
+                />
+              ))}
           </div>
         </div>
       </section>
