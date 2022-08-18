@@ -9,6 +9,7 @@ import AllProductsOnLandingPage from "../../components/allproducts/AllProductsOn
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProductsAction } from "./products.action";
+import AnimatedPage from "../../AnimatedPage";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -20,12 +21,14 @@ const LandingPage = () => {
   return (
     <div>
       <DefaultLayout>
-        <div className="landing-page-body p-2">
-          <CarouselComponent />
-          <OfferComponent />
-          <SpecialItemComponent />
-          <AllProductsOnLandingPage products={products} />
-        </div>
+        <AnimatedPage>
+          <div className="landing-page-body p-2">
+            <CarouselComponent />
+            <OfferComponent />
+            <SpecialItemComponent />
+            <AllProductsOnLandingPage products={products} />
+          </div>
+        </AnimatedPage>
       </DefaultLayout>
     </div>
   );
