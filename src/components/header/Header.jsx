@@ -31,7 +31,11 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/hot-deals">Hot Deals</Nav.Link>
+            <Nav>
+              <Link to="/" style={{ textDecoration: "none", color: "grey" }}>
+                Hot Deals
+              </Link>
+            </Nav>
             <Nav>
               <Link
                 to="/products"
@@ -45,7 +49,7 @@ const Header = () => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link
-                      to={`/products/`}
+                      to="/products"
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       {category}
@@ -59,7 +63,7 @@ const Header = () => {
             <Nav.Link>
               <Form.Control
                 type="text"
-                placeholder="Search products/ categories"
+                placeholder="Search products/categories"
               />
             </Nav.Link>
             <Nav.Link>

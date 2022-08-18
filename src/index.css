@@ -7,7 +7,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   background-color: rgb(238, 238, 238);
+  opacity: 1;
+  transition: opacity 5s ease;
 }
+.fadein {
+  opacity: 0;
+  -moz-transition: opacity 1.5s;
+  -webkit-transition: opacity 1.5s;
+  -o-transition: opacity 1.5s;
+  transition: opacity 5s;
+}
+
+body.loaded .fadein {
+  opacity: 1;
+}
+
 .row {
   width: 100%;
   max-width: 1200px;

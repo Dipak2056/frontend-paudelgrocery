@@ -2,6 +2,8 @@
   display: block;
   text-align: center;
   margin-top: 2em;
+  opacity: 1;
+  transition: opacity 5s ease;
 }
 .special-item-section {
   text-align: center;
