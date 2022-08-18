@@ -76,8 +76,13 @@
     margin: 5px;
     justify-content: space-between;
   }
+  .productlanding--img {
+    display: flex;
+    justify-content: center;
+  }
   .productlanding--img > img {
     max-height: 150px;
+    max-width: 70%;
   }
   .productlanding--description--smallimg {
     height: 70px;

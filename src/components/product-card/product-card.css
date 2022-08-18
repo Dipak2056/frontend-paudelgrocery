@@ -43,7 +43,18 @@
   object-fit: cover;
   overflow: auto;
   font-size: 0.8rem;
+  position: relative;
 }
+.product__card--description::-webkit-scrollbar {
+  display: none;
+}
+.product__card--description:hover {
+  z-index: 10;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 .product__card--footer {
   display: flex;
   justify-content: space-between;

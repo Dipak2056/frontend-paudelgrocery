@@ -66,3 +66,32 @@ code {
 .all__products--productsection > .product__card > .product__card--header {
   display: none;
 }
+.product__img--skeleton {
+  width: 100%;
+  max-width: 250px;
+  height: 320px;
+  opacity: 0.5;
+  transition: all 0.5s ease;
+  background-color: rgb(204, 204, 204);
+  margin-bottom: 8px;
+}
+
+.skeleton {
+  background-color: rgb(227, 227, 227) !important;
+  margin-bottom: 8px;
+}
+
+.product__title--skeleton {
+  height: 21px;
+  width: 100%;
+}
+
+.product__rating--skeleton {
+  width: 100px;
+  height: 19px;
+}
+
+.product__price--skeleton {
+  width: 200px;
+  height: 19px;
+}
