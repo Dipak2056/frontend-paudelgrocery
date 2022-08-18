@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductLandingPage.css";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { useParams } from "react-router-dom";
+//redux
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { fetchProductsAction } from "../LandingPage/products.action";
+import { addToCart, getTotals } from "../cart-page/cart.slice";
 
 const ProductLandingPage = () => {
   const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(fetchProductsAction());
-  }, []);
-  const { products } = useSelector((state) => state.product);
+  }, [dispatch]);
 
   const { id } = useParams();
   const product = products.find((product) => +product.id === +id);
   const [selectedproduct, setSelectedProduct] = useState(product);
+
+  const handleOnAddToCart = (product) => {
+    dispatch(addToCart(product));
+    dispatch(getTotals());
+  };
   return (
     <DefaultLayout>
       <section className="productlanding__main">
@@ -34,7 +40,7 @@ const ProductLandingPage = () => {
               </div>
               <div className="productlanding--description--imgs">
                 <div className="productlanding--description--smallimg">
-                  <img src={product.image} alt="small image" />
+                  <img src={product.image} alt="" />
                 </div>
               </div>
               <div className="product__landing--product--price">
@@ -46,7 +52,10 @@ const ProductLandingPage = () => {
                 Rated over {product.rating.count} times.
               </div>
             </>
-            <button className="product--card--footer">
+            <button
+              className="product--card--footer"
+              onClick={() => handleOnAddToCart(product)}
+            >
               Add to cart
               <i className="fa-solid fa-shopping-cart"></i>
             </button>
@@ -68,6 +77,7 @@ const ProductLandingPage = () => {
               .slice()
               .map((product) => (
                 <ProductCard
+                  product={product}
                   key={product.id}
                   id={product.id}
                   price={product.price}

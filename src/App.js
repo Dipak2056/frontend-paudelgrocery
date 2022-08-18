@@ -8,7 +8,11 @@ import ProductsPage from "./pages/Product-page/ProductsPage";
 import ProductLandingPage from "./pages/product-landingPage/ProductLandingPage";
 
 import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { getTotals } from "./pages/cart-page/cart.slice";
 function App() {
+  const dispatch = useDispatch();
+  dispatch(getTotals());
   return (
     <div className="app">
       <BrowserRouter>

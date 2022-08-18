@@ -3,11 +3,21 @@ import DefaultLayout from "../../components/layouts/DefaultLayout";
 import "./CartPage.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, decreaseCart, removeFromCart } from "./cart.slice";
+import {
+  addToCart,
+  decreaseCart,
+  getTotals,
+  removeFromCart,
+} from "./cart.slice";
+import { useEffect } from "react";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
@@ -20,13 +30,11 @@ const CartPage = () => {
   return (
     <DefaultLayout>
       <div className="cart__page--container">
-        <div className="cart__header">
-          <h1>Your cart has 1 product.</h1>
-        </div>
         <div className="cart__body">
           {cart.cartItems.length === 0 ? (
             <>
               <div className="cart__empty--img">
+                <h2 className="text-center">You have empty cart!!</h2>
                 <figure>
                   <img
                     src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png"
@@ -38,34 +46,38 @@ const CartPage = () => {
           ) : (
             <>
               {" "}
-              <div className="cart__table">
-                <div className="cart__table--header">
-                  <div className="cart__table--header--item">Product</div>
-                  <div className="cart__table--header--item">Quantity</div>
-                  <div className="cart__table--header--item">Price</div>
+              <div className="cart__table table">
+                <div className="cart__table--header ">
+                  <div className="cart__table--header--item product">
+                    Product
+                  </div>
+                  <div className="cart__table--header--item quantity">
+                    Quantity
+                  </div>
+                  <div className="cart__table--header--item price">Price</div>
                 </div>
                 {cart.cartItems?.map((cartItem) => (
                   <div className="cart__table--body">
-                    <div className="cart__table--body--product--desc">
-                      <div className="figure">
+                    <div className="cart__table--body--product--desc detail">
+                      <div className="figure picture">
                         <img
                           className="product__img"
                           src={cartItem.image}
                           alt=""
                         />
                       </div>
-                      <div>
-                        <div className="product__name">{cartItem.title}</div>
-                        <div className="product__price">${cartItem.price}</div>
-                        <div
-                          className="product__remove"
-                          onClick={() => handleRemoveFromCart(cartItem)}
-                        >
-                          Remove
-                        </div>
+                      <div className="product__name name">{cartItem.title}</div>
+                      <div className="product__price price">
+                        ${cartItem.price}
+                      </div>
+                      <div
+                        className="product__remove remove"
+                        onClick={() => handleRemoveFromCart(cartItem)}
+                      >
+                        Remove
                       </div>
                     </div>
-                    <div className="cart__table--body--product--qty">
+                    <div className="cart__table--body--product--qty quantity">
                       <button
                         className="decrease__button"
                         onClick={() => handleOnDecrease(cartItem)}
@@ -80,7 +92,7 @@ const CartPage = () => {
                         +
                       </button>
                     </div>
-                    <div className="cart__table--body--product--price">
+                    <div className="cart__table--body--product--price totalprice">
                       ${cartItem.price * cartItem.cartQuantity}
                     </div>
                   </div>
@@ -90,24 +102,24 @@ const CartPage = () => {
                 <div className="cart__table--footer">
                   <div className="cart__table--footer--subtotal">
                     <span className="subtotal">Sub Total:</span>{" "}
-                    <span>$80</span>
+                    <span>${(0.9 * cart.cartTotalAmount).toFixed(2)}</span>
                   </div>
                   <div className="cart__table--footer--tax">
-                    <span className="tax">Tax:</span> <span>$20</span>
+                    <span className="tax">Tax:</span>{" "}
+                    <span>{(0.1 * cart.cartTotalAmount).toFixed(2)}</span>
                   </div>
                   <div className="cart__table--footer--total">
-                    <span className="total">Total:</span> <span>$100</span>
+                    <span className="total">Total:</span>{" "}
+                    <span>{cart.cartTotalAmount.toFixed(2)}</span>
                   </div>
-                  <div className="cart__table--checkout--button shop-now-button">
-                    <button>Checkout</button>
-                  </div>
+                  <button className="cart-btn">Checkout</button>
                 </div>
               </div>
             </>
           )}
 
           <div className="cart__button">
-            <Link to="/products">
+            <Link to="/">
               <button className="cart-btn">Add Products</button>
             </Link>
           </div>

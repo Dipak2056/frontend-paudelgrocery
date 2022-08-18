@@ -35,7 +35,7 @@ export const ProductCard = ({
         setImg(imageskeleton);
       }, 400);
     };
-  }, []);
+  }, [image]);
   return (
     <>
       {img ? (

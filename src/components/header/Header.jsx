@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoriesAction } from "../../pages/LandingPage/category.action";
 import { useEffect } from "react";
+import { getTotals } from "../../pages/cart-page/cart.slice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(fetchCategoriesAction());
-  }, []);
+    dispatch(getTotals());
+  }, [dispatch]);
   const { categories } = useSelector((state) => state.category);
 
   return (
@@ -77,7 +80,7 @@ const Header = () => {
             <Link to="/cart">
               <span className="cart">
                 <i className="fa-solid fa-cart-shopping"></i>
-                <span className="cart__length">12</span>
+                <span className="cart__length">{cartTotalQuantity}</span>
               </span>
             </Link>
           </Nav>

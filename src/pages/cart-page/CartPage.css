@@ -1,26 +1,24 @@
-.cart__body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .cart__page--container {
   display: flex;
   flex-direction: column;
   background-color: rgba(111, 228, 123, 0.141);
-  padding-top: 10%;
-  padding-bottom: 5%;
-  padding-left: 100px;
-  padding-right: 100px;
+  width: 100%;
+  padding: 20%;
+}
+.cart__table--body {
+  display: flex;
+  justify-content: space-between;
 }
 
 figure > img {
   width: 100%;
 }
-.cart__empty--img {
-  min-height: 20vh;
+.cart__empty--img > figure > img {
+  max-height: 30vh;
+  object-fit: contain;
 }
-.cart-btn {
-  color: red;
+.cart-btn,
+.cart__table--checkout--button {
   border: none;
   background-color: green;
   color: white;
@@ -45,26 +43,43 @@ figure > img {
   display: flex;
   flex-direction: column;
 }
-.cart__table--header,
-.cart__table--body {
+.cart__table--header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
+
 .cart__table--header {
   color: white;
   background: #407006;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  padding: 10px 10px;
 }
-.cart__table--body {
-  padding-left: 10px;
-  padding-right: 10px;
-}
+
 .cart__table--body--product--qty {
-  text-align: left;
-  width: 33%;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart__table--body--product--qty > button:first-child {
+  width: 30%;
+  background-color: #407006;
+  color: white;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 3px solid #407006;
+  font-size: 1.5em;
+}
+.cart__table--body--product--qty > button:last-child {
+  width: 30%;
+  background-color: #407006;
+  color: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 3px solid #407006;
+  font-size: 1.5em;
 }
 .product__remove {
   border: 1px solid red;
@@ -74,6 +89,7 @@ figure > img {
 }
 .product__remove:hover {
   border: 1px solid red;
+  background-color: red;
   border-radius: 8px;
   text-align: center;
   color: white;
@@ -84,12 +100,11 @@ figure > img {
 .cart__table--body--product--desc {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   max-width: 33%;
 }
 .product__img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
 }
 .cart__table--footer {
   align-self: flex-end;
@@ -109,6 +124,7 @@ figure > img {
   font-weight: 200;
   color: gray;
 }
+
 @media screen and (max-width: 768px) {
   .cart__page--container {
     padding-left: 10px;

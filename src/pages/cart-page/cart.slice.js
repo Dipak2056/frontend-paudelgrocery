@@ -70,8 +70,11 @@ const cartSlice = createSlice({
         },
         { total: 0, quantity: 0 }
       );
+      state.cartTotalQuantity = quantity;
+      state.cartTotalAmount = total;
     },
   },
 });
-export const { addToCart, removeFromCart, decreaseCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, decreaseCart, getTotals } =
+  cartSlice.actions;
 export default cartSlice.reducer;
