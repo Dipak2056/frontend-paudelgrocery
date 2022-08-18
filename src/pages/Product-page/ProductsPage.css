@@ -36,7 +36,8 @@
 }
 
 .all__products--section {
-  padding-top: 8%;
+  padding-top: 4%;
+  margin-top: 1%;
   display: flex;
   flex-direction: column;
   background-color: rgba(194, 40, 40, 0);
@@ -45,7 +46,7 @@
 }
 .all__products--productsection {
   display: flex;
-  height: 80vh;
+  height: 100vh;
   flex-wrap: wrap;
   justify-content: center;
   background-color: rgba(194, 40, 40, 0);

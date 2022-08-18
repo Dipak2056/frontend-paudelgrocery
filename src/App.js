@@ -1,9 +1,10 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import CartPage from "./pages/cart-page/CartPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProductsPage from "./pages/Product-page/ProductsPage";
 import ProductLandingPage from "./pages/product-landingPage/ProductLandingPage";
+//animation
 
 function App() {
   return (
