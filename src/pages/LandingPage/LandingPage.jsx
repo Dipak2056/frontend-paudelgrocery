@@ -21,6 +21,7 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(fetchProductsAction());
   }, []);
+
   return (
     <div>
       <AnimatedPage>

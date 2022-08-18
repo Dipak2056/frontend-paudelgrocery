@@ -2,7 +2,6 @@ import axios from "axios";
 const rootUrlAPI = "https://fakestoreapi.com";
 const productsAPI = rootUrlAPI + "/products";
 const categoriesAPI = productsAPI + "/categories";
-const getSingleProductAPI = productsAPI + "/" + "id";
 
 //there will be lots of repetition on doing individual axios get method
 //so i am creating this api, processor

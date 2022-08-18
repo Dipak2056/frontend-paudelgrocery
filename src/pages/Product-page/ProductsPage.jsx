@@ -118,6 +118,7 @@ const ProductsPage = () => {
             <section className="all__products--productsection">
               {selectedProducts.map((product) => (
                 <ProductCard
+                  product={product}
                   key={product.id}
                   id={product.id}
                   title={product.title}

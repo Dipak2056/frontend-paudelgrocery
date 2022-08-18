@@ -18,6 +18,7 @@ const AllProductsOnLandingPage = ({ products }) => {
         {products.slice(0, dispProducts).map((product) => {
           return (
             <ProductCard
+              product={product}
               id={product.id}
               key={product.id}
               title={product.title}

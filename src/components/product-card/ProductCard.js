@@ -1,9 +1,15 @@
 import "./product-card.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+//redux implementation
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../pages/cart-page/cart.slice";
 
 export const ProductCard = ({
   id,
+  product,
   image,
   title,
   rating,
@@ -12,6 +18,14 @@ export const ProductCard = ({
   category,
   ratedby,
 }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    navigate("/cart");
+  };
+
   const [img, setImg] = useState();
   useEffect(() => {
     const imageskeleton = new Image();
@@ -77,7 +91,7 @@ export const ProductCard = ({
                 </Link>
               </div>
               <div className="shop-now-button">
-                <button>
+                <button onClick={() => handleAddToCart(product)}>
                   Add to cart <i className="fa-solid fa-cart-shopping"></i>
                 </button>
               </div>

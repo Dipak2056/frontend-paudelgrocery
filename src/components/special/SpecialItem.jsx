@@ -1,7 +1,6 @@
 import "./special-items.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { ProductCard } from "../product-card/ProductCard";
-import { useState } from "react";
 //redux
 import { useSelector } from "react-redux";
 
@@ -17,6 +16,7 @@ export const SpecialItemComponent = () => {
           .slice(0, 4)
           .map((item, i) => (
             <ProductCard
+              product={item}
               key={i}
               id={item.id}
               category={item.category}
