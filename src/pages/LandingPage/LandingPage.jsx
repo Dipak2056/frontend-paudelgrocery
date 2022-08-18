@@ -20,16 +20,16 @@ const LandingPage = () => {
   }, []);
   return (
     <div>
-      <DefaultLayout>
-        <AnimatedPage>
+      <AnimatedPage>
+        <DefaultLayout>
           <div className="landing-page-body p-2">
             <CarouselComponent />
             <OfferComponent />
             <SpecialItemComponent />
             <AllProductsOnLandingPage products={products} />
           </div>
-        </AnimatedPage>
-      </DefaultLayout>
+        </DefaultLayout>
+      </AnimatedPage>
     </div>
   );
 };
