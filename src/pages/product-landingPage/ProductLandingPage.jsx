@@ -11,6 +11,7 @@ import { addToCart, getTotals } from "../cart-page/cart.slice";
 const ProductLandingPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
+
   useEffect(() => {
     dispatch(fetchProductsAction());
   }, [dispatch]);

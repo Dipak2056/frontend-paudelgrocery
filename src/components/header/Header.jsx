@@ -34,25 +34,20 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav>
-              <Link to="/" style={{ textDecoration: "none", color: "grey" }}>
-                Hot Deals
-              </Link>
-            </Nav>
-            <Nav>
+            <Nav.Link>
               <Link
                 to="/products"
                 style={{ textDecoration: "none", color: "grey" }}
               >
                 Our Products
               </Link>
-            </Nav>
+            </Nav.Link>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
               {categories.map((category, index) => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link
-                      to="/products"
+                      to={`/products/${category}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       {category}

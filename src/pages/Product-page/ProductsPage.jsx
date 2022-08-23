@@ -6,17 +6,19 @@ import "./ProductsPage.css";
 
 import { fetchProductsAction } from "../LandingPage/products.action";
 import AnimatedPage from "../../AnimatedPage";
+import { useParams } from "react-router";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchProductsAction());
-  }, [dispatch]);
+
   const { products } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
 
   const [selectedProducts, setSelectedproducts] = useState(products);
   const [selectedCategory, setSelectedCategory] = useState("");
+  useEffect(() => {
+    dispatch(fetchProductsAction());
+  }, [dispatch, products]);
 
   function filterProducts(value) {
     if (value === "DEFAULT") {

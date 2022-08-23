@@ -10,6 +10,7 @@ import {
   removeFromCart,
 } from "./cart.slice";
 import { useEffect } from "react";
+import { Button, Table } from "react-bootstrap";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const CartPage = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
+
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
@@ -46,57 +48,65 @@ const CartPage = () => {
           ) : (
             <>
               {" "}
-              <div className="cart__table table">
-                <div className="cart__table--header ">
-                  <div className="cart__table--header--item product">
-                    Product
-                  </div>
-                  <div className="cart__table--header--item quantity">
-                    Quantity
-                  </div>
-                  <div className="cart__table--header--item price">Price</div>
-                </div>
-                {cart.cartItems?.map((cartItem) => (
-                  <div className="cart__table--body">
-                    <div className="cart__table--body--product--desc detail">
-                      <div className="figure picture">
-                        <img
-                          className="product__img"
-                          src={cartItem.image}
-                          alt=""
-                        />
-                      </div>
-                      <div className="product__name name">{cartItem.title}</div>
-                      <div className="product__price price">
-                        ${cartItem.price}
-                      </div>
-                      <div
-                        className="product__remove remove"
-                        onClick={() => handleRemoveFromCart(cartItem)}
-                      >
-                        Remove
-                      </div>
-                    </div>
-                    <div className="cart__table--body--product--qty quantity">
-                      <button
-                        className="decrease__button"
-                        onClick={() => handleOnDecrease(cartItem)}
-                      >
-                        -
-                      </button>
-                      {cartItem.cartQuantity}
-                      <button
-                        className="increase__button"
-                        onClick={() => handleOnIncrease(cartItem)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <div className="cart__table--body--product--price totalprice">
-                      ${cartItem.price * cartItem.cartQuantity}
-                    </div>
-                  </div>
-                ))}
+              <div className="cart__table">
+                <Table striped>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.cartItems?.map((cartItem, i) => (
+                      <tr>
+                        <td>{i + 1}</td>
+                        <td className="text-center">
+                          <div className="d-flex">
+                            <img
+                              style={{ width: "100px", height: "100px" }}
+                              src={cartItem.image}
+                              alt=""
+                              srcset=""
+                            />
+                            <div className="flex-wrap">
+                              <div>{cartItem.title}</div>
+                              <Button
+                                className="product__remove mt-1"
+                                variant="danger"
+                                onClick={() => handleRemoveFromCart(cartItem)}
+                              >
+                                Remove{" "}
+                                <i className=" fa-solid fa-trash-can"></i>
+                              </Button>
+                            </div>
+                          </div>
+                        </td>
+                        <td>{cartItem.price}</td>
+                        <td className=" text-center">
+                          <div className="d-flex align-items-center">
+                            <Button
+                              className="btn-sm m-1"
+                              onClick={() => handleOnDecrease(cartItem)}
+                            >
+                              -
+                            </Button>
+                            {cartItem.cartQuantity}{" "}
+                            <Button
+                              className="btn-sm m-1"
+                              onClick={() => handleOnIncrease(cartItem)}
+                            >
+                              +
+                            </Button>
+                          </div>
+                        </td>
+                        <td>{cartItem.price * cartItem.cartQuantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
 
                 <hr />
                 <div className="cart__table--footer">
