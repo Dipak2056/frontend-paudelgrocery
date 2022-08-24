@@ -43,7 +43,7 @@ const Header = () => {
               </Link>
             </Nav.Link>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
-              {categories.map((category, index) => {
+              {/* {categories.map((category, index) => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link
@@ -54,7 +54,7 @@ const Header = () => {
                     </Link>
                   </NavDropdown.Item>
                 );
-              })}
+              })} */}
             </NavDropdown>
           </Nav>
           <Nav className="search-login">

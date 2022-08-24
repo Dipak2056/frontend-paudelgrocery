@@ -25,7 +25,7 @@ const AllProductsOnLandingPage = ({ products }) => {
               price={product.price}
               description={product.description}
               image={product.image}
-              rating={product.rating.rate}
+              rating={product.ratings}
             />
           );
         })}

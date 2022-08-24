@@ -1,5 +1,5 @@
 import axios from "axios";
-const rootUrlAPI = "https://fakestoreapi.com";
+const rootUrlAPI = "http://localhost:8000/api/v1";
 const productsAPI = rootUrlAPI + "/products";
 const categoriesAPI = productsAPI + "/categories";
 
