@@ -67,12 +67,12 @@ const CartPage = () => {
                           <div className="d-flex">
                             <img
                               style={{ width: "100px", height: "100px" }}
-                              src={cartItem.image}
+                              src={cartItem.images[0]}
                               alt=""
                               srcset=""
                             />
                             <div className="flex-wrap">
-                              <div>{cartItem.title}</div>
+                              <div>{cartItem.name}</div>
                               <Button
                                 className="product__remove mt-1"
                                 variant="danger"

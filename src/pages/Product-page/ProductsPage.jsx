@@ -122,13 +122,13 @@ const ProductsPage = () => {
                 <ProductCard
                   product={product}
                   key={product.id}
-                  id={product.id}
-                  title={product.title}
-                  image={product.image}
+                  _id={product._id}
+                  name={product.name}
+                  images={product.images}
                   price={product.price}
                   description={product.description}
-                  rating={product.rating.rate}
-                  category={product.category}
+                  ratings={product.ratings}
+                  catId={product.catId}
                 />
               ))}
             </section>

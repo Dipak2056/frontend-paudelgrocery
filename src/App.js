@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductLandingPage />} />
+          <Route path="/products/:slug" element={<ProductLandingPage />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>

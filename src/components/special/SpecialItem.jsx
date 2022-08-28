@@ -12,20 +12,19 @@ export const SpecialItemComponent = () => {
       <h2>Best seller</h2>
       <section className="special-item-section">
         {products
-          .filter((product) => product.rating.rate > 4)
+          .filter((product) => product.ratings > 4)
           .slice(0, 4)
           .map((item, i) => (
             <ProductCard
               product={item}
               key={i}
-              id={item.id}
-              category={item.category}
-              title={item.title}
+              _id={item._id}
+              catId={item.catId}
+              name={item.name}
               price={item.price}
               description={item.description}
-              image={item.image}
-              rating={item.rating.rate}
-              ratedby={item.rating.count}
+              images={item.images}
+              ratings={item.ratings}
             />
           ))}
       </section>

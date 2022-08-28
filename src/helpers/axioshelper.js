@@ -1,7 +1,7 @@
 import axios from "axios";
 const rootUrlAPI = "http://localhost:8000/api/v1";
 const productsAPI = rootUrlAPI + "/products";
-const categoriesAPI = productsAPI + "/categories";
+const categoriesAPI = rootUrlAPI + "/categories";
 
 //there will be lots of repetition on doing individual axios get method
 //so i am creating this api, processor

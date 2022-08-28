@@ -19,13 +19,13 @@ const AllProductsOnLandingPage = ({ products }) => {
           return (
             <ProductCard
               product={product}
-              id={product.id}
-              key={product.id}
-              title={product.title}
+              _id={product._id}
+              key={product._id}
+              name={product.name}
               price={product.price}
               description={product.description}
-              image={product.image}
-              rating={product.ratings}
+              images={product.images}
+              ratings={product.ratings}
             />
           );
         })}

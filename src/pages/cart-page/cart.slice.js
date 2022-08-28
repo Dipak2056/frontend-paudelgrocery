@@ -15,17 +15,17 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
-        toast.warning(`increased product quantity of ${action.payload.title}`, {
+        toast.warning(`increased product quantity of ${action.payload.name}`, {
           position: "bottom-left",
         });
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
-        toast.success(`Added ${action.payload.title}  to cart`, {
+        toast.success(`Added ${action.payload.name}  to cart`, {
           position: "bottom-left",
         });
       }
@@ -33,26 +33,26 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const nextCartItems = state.cartItems.filter(
-        (cartItem) => cartItem.id !== action.payload.id
+        (cartItem) => cartItem._id !== action.payload._id
       );
       state.cartItems = nextCartItems;
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-      toast.error(`Removed ${action.payload.title}  from cart`, {
+      toast.error(`Removed ${action.payload.name}  from cart`, {
         position: "bottom-left",
       });
     },
     decreaseCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
-        (cartItem) => cartItem.id === action.payload.id
+        (cartItem) => cartItem._id === action.payload._id
       );
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.payload.id
+          (cartItem) => cartItem._id !== action.payload._id
         );
         state.cartItems = nextCartItems;
-        toast.error(`Removed ${action.payload.title}  from cart`, {
+        toast.error(`Removed ${action.payload.name}  from cart`, {
           position: "bottom-right",
         });
       }

@@ -16,8 +16,8 @@ const ProductLandingPage = () => {
     dispatch(fetchProductsAction());
   }, [dispatch]);
 
-  const { id } = useParams();
-  const product = products.find((product) => +product.id === +id);
+  const { slug } = useParams();
+  const product = products.find((product) => product.slug === slug);
   const [selectedproduct, setSelectedProduct] = useState(product);
 
   const handleOnAddToCart = (product) => {
@@ -28,29 +28,26 @@ const ProductLandingPage = () => {
     <DefaultLayout>
       <section className="productlanding__main">
         <div className="productlanding__card">
-          <div className="productlanding--img">
-            <img src={product.image} alt="" />
-          </div>
+          <div className="productlanding--img"></div>
           <div className="productlanding--description">
             <>
               <div className="product__landing--product--title">
-                {product.title}
+                {product.name}
               </div>
               <div className="product__landing--product--description">
                 {product.description}
               </div>
               <div className="productlanding--description--imgs">
                 <div className="productlanding--description--smallimg">
-                  <img src={product.image} alt="" />
+                  <img src={product.images[0]} alt="" />
                 </div>
               </div>
               <div className="product__landing--product--price">
                 <strong>Price:</strong> ${product.price}
               </div>
               <div className="product__landing--product--price">
-                <strong>Ratings:{product.rating.rate}</strong>
+                <strong>Ratings:{product.ratings}</strong>
                 <i className="fa-solid fa-star text-warning"></i>
-                Rated over {product.rating.count} times.
               </div>
             </>
             <button
@@ -69,23 +66,23 @@ const ProductLandingPage = () => {
           <hr />
           <div className="second--card--product__cards">
             {products
-              .filter(
-                (product) =>
-                  product.rating.rate > 3 &&
-                  +product.id !== +id &&
-                  product.category === selectedproduct.category
-              )
-              .slice()
+              // .filter(
+              //   (product) =>
+              //     product.ratings > 3 &&
+              //     product.slug !== slug &&
+              //     product.catId === selectedproduct.catId
+              // )
+              .slice(0, 3)
               .map((product) => (
                 <ProductCard
                   product={product}
-                  key={product.id}
-                  id={product.id}
+                  key={product._id}
+                  _id={product._id}
                   price={product.price}
                   description={product.description}
-                  title={product.title}
-                  image={product.image}
-                  rating={product.rating.rate}
+                  name={product.name}
+                  images={product.images}
+                  ratings={product.ratings}
                 />
               ))}
           </div>
