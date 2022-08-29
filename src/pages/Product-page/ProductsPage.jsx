@@ -7,6 +7,7 @@ import "./ProductsPage.css";
 import { fetchProductsAction } from "../LandingPage/products.action";
 import AnimatedPage from "../../AnimatedPage";
 import { useParams } from "react-router";
+import { fetchCategoriesAction } from "../LandingPage/category.action";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   useEffect(() => {
     dispatch(fetchProductsAction());
-  }, [dispatch, products]);
+    dispatch(fetchCategoriesAction());
+  }, [dispatch]);
 
   function filterProducts(value) {
     if (value === "DEFAULT") {
@@ -67,7 +69,7 @@ const ProductsPage = () => {
       <DefaultLayout>
         <div className="all__product">
           <hr />
-          <section className="all__products--select--section">
+          {/* <section className="all__products--select--section">
             <h3 className="selection--header bg-warning">Select</h3>
             <ul className="all__categories--list">
               {categories.map((category, i) => {
@@ -78,10 +80,10 @@ const ProductsPage = () => {
                 );
               })}
             </ul>
-          </section>
+          </section> */}
 
           <section className="all__products--section">
-            <h2>Showing result for {selectedCategory} </h2>
+            {/* <h2>Showing result for {selectedCategory} </h2>
             <div className="selection--area">
               <span>
                 select categories
@@ -115,20 +117,19 @@ const ProductsPage = () => {
               </span>
             </div>
 
-            <hr />
+            <hr /> */}
 
             <section className="all__products--productsection">
-              {selectedProducts.map((product) => (
+              {products.map((product) => (
                 <ProductCard
                   product={product}
-                  key={product.id}
+                  key={product._id}
                   _id={product._id}
                   name={product.name}
                   images={product.images}
                   price={product.price}
                   description={product.description}
                   ratings={product.ratings}
-                  catId={product.catId}
                 />
               ))}
             </section>

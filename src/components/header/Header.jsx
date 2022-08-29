@@ -16,7 +16,12 @@ const Header = () => {
     dispatch(getTotals());
   }, [dispatch]);
   const { categories } = useSelector((state) => state.category);
-
+  const parentCategories = categories
+    .slice()
+    .filter((category) => !category.parentCatId);
+  const childCategories = categories
+    .slice()
+    .filter((category) => category.parentCatId);
   return (
     <Navbar
       collapseOnSelect
@@ -43,7 +48,7 @@ const Header = () => {
               </Link>
             </Nav.Link>
             <NavDropdown title="Categories" id="collasible-nav-dropdown">
-              {categories.map((category, index) => {
+              {parentCategories.map((category, index) => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link

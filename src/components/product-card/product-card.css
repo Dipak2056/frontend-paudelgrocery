@@ -39,7 +39,6 @@
 }
 .product__card--description {
   margin-top: 2px;
-  height: 100px;
   object-fit: cover;
   overflow: auto;
   font-size: 0.8rem;

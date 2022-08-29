@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 export const SpecialItemComponent = () => {
   const { products } = useSelector((state) => state.product);
+  const { categories } = useSelector((state) => state.category);
 
   return (
     <section className="special-item">
@@ -20,6 +21,7 @@ export const SpecialItemComponent = () => {
               key={i}
               _id={item._id}
               catId={item.catId}
+              categories={categories}
               name={item.name}
               price={item.price}
               description={item.description}

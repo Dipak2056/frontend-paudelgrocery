@@ -67,7 +67,10 @@ const CartPage = () => {
                           <div className="d-flex">
                             <img
                               style={{ width: "100px", height: "100px" }}
-                              src={cartItem.images[0]}
+                              src={
+                                process.env.REACT_APP_IMAGE_URL +
+                                cartItem.images[0].slice(6)
+                              }
                               alt=""
                               srcset=""
                             />

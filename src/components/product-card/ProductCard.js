@@ -16,6 +16,7 @@ export const ProductCard = ({
   description,
   price,
   catId,
+  categories,
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,18 +36,31 @@ export const ProductCard = ({
       }, 400);
     };
   }, [images[0]]);
+  const findCategorie = (catId) => {
+    const item = categories.find((product) => product._id === catId);
+    return item.catName;
+  };
   return (
     <>
       <>
         <div className="product__card">
-          {catId ? <div className="product__card--header">{catId}</div> : ""}
+          {catId ? (
+            <div className="product__card--header">{findCategorie(catId)}</div>
+          ) : (
+            ""
+          )}
           <div className="product__card--body">
             <Link
               to={`/products/${product.slug}`}
               style={{ textDecoration: "none", color: "white" }}
             >
               <div className="product--image">
-                <img src={images[0]} alt="product" />
+                <img
+                  src={`${
+                    process.env.REACT_APP_IMAGE_URL + images[0].slice(6)
+                  }`}
+                  alt="product"
+                />
               </div>{" "}
             </Link>
 
@@ -56,7 +70,7 @@ export const ProductCard = ({
             <div className="product__card--description">
               <strong>Description:</strong> {description}
             </div>
-            <div className="product__card--ratings ">
+            <div className="product__card--ratings text-left">
               <strong>Ratings: </strong>{" "}
               <span>
                 {" "}
@@ -64,7 +78,7 @@ export const ProductCard = ({
                 {ratings}
               </span>
             </div>
-            <div className="product__card--price">
+            <div className="product__card--price text-left">
               {" "}
               <strong>Price: </strong>
               {price}
@@ -82,7 +96,7 @@ export const ProductCard = ({
             </div>
             <div className="shop-now-button">
               <button onClick={() => handleAddToCart(product)}>
-                Add to cart <i className="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
               </button>
             </div>
           </div>

@@ -28,7 +28,12 @@ const ProductLandingPage = () => {
     <DefaultLayout>
       <section className="productlanding__main">
         <div className="productlanding__card">
-          <div className="productlanding--img"></div>
+          <div className="productlanding--img">
+            <img
+              src={process.env.REACT_APP_IMAGE_URL + product.images[0].slice(6)}
+              alt=""
+            />
+          </div>
           <div className="productlanding--description">
             <>
               <div className="product__landing--product--title">
@@ -39,7 +44,13 @@ const ProductLandingPage = () => {
               </div>
               <div className="productlanding--description--imgs">
                 <div className="productlanding--description--smallimg">
-                  <img src={product.images[0]} alt="" />
+                  <img
+                    src={
+                      process.env.REACT_APP_IMAGE_URL +
+                      product.images[0].slice(6)
+                    }
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="product__landing--product--price">
@@ -66,12 +77,7 @@ const ProductLandingPage = () => {
           <hr />
           <div className="second--card--product__cards">
             {products
-              // .filter(
-              //   (product) =>
-              //     product.ratings > 3 &&
-              //     product.slug !== slug &&
-              //     product.catId === selectedproduct.catId
-              // )
+              .filter((product) => product.ratings > 3 && product.slug !== slug)
               .slice(0, 3)
               .map((product) => (
                 <ProductCard
