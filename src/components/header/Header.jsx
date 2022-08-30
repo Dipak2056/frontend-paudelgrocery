@@ -7,21 +7,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoriesAction } from "../../pages/LandingPage/category.action";
 import { useEffect } from "react";
 import { getTotals } from "../../pages/cart-page/cart.slice";
+import { fetchProductsAction } from "../../pages/LandingPage/products.action";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(fetchCategoriesAction());
+    dispatch(fetchProductsAction());
     dispatch(getTotals());
   }, [dispatch]);
   const { categories } = useSelector((state) => state.category);
   const parentCategories = categories
     .slice()
     .filter((category) => !category.parentCatId);
-  const childCategories = categories
-    .slice()
-    .filter((category) => category.parentCatId);
+
   return (
     <Navbar
       collapseOnSelect
@@ -52,7 +52,7 @@ const Header = () => {
                 return (
                   <NavDropdown.Item key={index}>
                     <Link
-                      to={`/products/${category.catName}`}
+                      to={`/categories/${category.catName}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       {category.catName}

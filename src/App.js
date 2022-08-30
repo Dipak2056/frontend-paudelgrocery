@@ -6,6 +6,7 @@ import CartPage from "./pages/cart-page/CartPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProductsPage from "./pages/Product-page/ProductsPage";
 import ProductLandingPage from "./pages/product-landingPage/ProductLandingPage";
+import { CategoryLandingPage } from "./pages/categories-landing/CategoryLandingPage";
 
 import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -21,6 +22,10 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:slug" element={<ProductLandingPage />} />
+          <Route
+            path="/categories/:category"
+            element={<CategoryLandingPage />}
+          />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>

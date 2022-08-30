@@ -16,6 +16,7 @@ export const ProductCard = ({
   description,
   price,
   catId,
+  subCatName,
   categories,
 }) => {
   const dispatch = useDispatch();
@@ -49,6 +50,13 @@ export const ProductCard = ({
           ) : (
             ""
           )}
+          {subCatName ? (
+            <div className="product__card--header">
+              {findCategorie(subCatName)}
+            </div>
+          ) : (
+            ""
+          )}
           <div className="product__card--body">
             <Link
               to={`/products/${product.slug}`}
@@ -65,23 +73,23 @@ export const ProductCard = ({
             </Link>
 
             <div className="product__card--product--name align-center">
-              <strong>{name}</strong>
+              <strong>{name || product.name}</strong>
             </div>
             <div className="product__card--description">
-              <strong>Description:</strong> {description}
+              <strong>Description:</strong> {description || product.description}
             </div>
             <div className="product__card--ratings text-left">
               <strong>Ratings: </strong>{" "}
               <span>
                 {" "}
                 <i className="fa-solid fa-star text-warning" />
-                {ratings}
+                {ratings || product.ratings}
               </span>
             </div>
             <div className="product__card--price text-left">
               {" "}
               <strong>Price: </strong>
-              {price}
+              {price || product.price}
             </div>
           </div>
           <div className="product__card--footer">

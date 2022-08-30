@@ -132,7 +132,7 @@ const CartPage = () => {
           )}
 
           <div className="cart__button">
-            <Link to="/">
+            <Link to="/products">
               <button className="cart-btn">Add Products</button>
             </Link>
           </div>

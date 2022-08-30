@@ -23,6 +23,11 @@ export const getAllCategories = async () => {
   const url = categoriesAPI;
   return apiProcessor({ method: "get", url });
 };
+//to get all the sub categories based on parentCatId
+export const getSubCategoriesBasedOnParentCatId = async (parentCatId) => {
+  const url = categoriesAPI + "/" + parentCatId;
+  return apiProcessor({ method: "get", url });
+};
 
 //to get all the products from the external api
 export const getAllProducts = async () => {
@@ -34,4 +39,13 @@ export const getAllProducts = async () => {
 export const getProductById = async (id) => {
   const url = productsAPI + "/" + id;
   return apiProcessor({ method: "get", url });
+};
+//get product based on parent cat id
+export const getProductsByParentCatId = async (ids) => {
+  try {
+    const { data } = await axios.post(productsAPI, ids);
+    return data;
+  } catch (error) {
+    console.log(error.mesage);
+  }
 };
