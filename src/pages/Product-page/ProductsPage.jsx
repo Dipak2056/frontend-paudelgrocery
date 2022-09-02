@@ -4,30 +4,26 @@ import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import "./ProductsPage.css";
 
-import { fetchProductsAction } from "../LandingPage/products.action";
 import AnimatedPage from "../../AnimatedPage";
-import { useParams } from "react-router";
-import { fetchCategoriesAction } from "../LandingPage/category.action";
 
 const ProductsPage = () => {
-  const dispatch = useDispatch();
-
   const { products } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
+  //to make the subCategories only appear at the aside bar
+  const parentCategories = categories.filter((item) => !item.parentCatId);
+  const childCategories = categories.filter((item) => item.parentCatId);
 
-  const [selectedProducts, setSelectedproducts] = useState(products);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedProducts, setSelectedproducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(childCategories);
+
   useEffect(() => {
-    dispatch(fetchProductsAction());
-    dispatch(fetchCategoriesAction());
-  }, [dispatch]);
+    setSelectedproducts(products);
+  }, [products]);
 
   function filterProducts(value) {
     if (value === "DEFAULT") {
       setSelectedproducts(
-        products
-          .slice()
-          .filter((product) => product.category === selectedCategory)
+        products.slice().filter((product) => product.catId === selectedCategory)
       );
     }
     setSelectedproducts(products);
@@ -35,7 +31,7 @@ const ProductsPage = () => {
       setSelectedproducts(
         products
           .slice()
-          .filter((product) => product.category === selectedCategory)
+          .filter((product) => product.catId === selectedCategory)
           .sort((a, b) => a.price - b.price)
       );
     }
@@ -43,7 +39,7 @@ const ProductsPage = () => {
       setSelectedproducts(
         products
           .slice()
-          .filter((product) => product.category === selectedCategory)
+          .filter((product) => product.catId === selectedCategory)
           .sort((a, b) => b.price - a.price)
       );
     }
@@ -51,17 +47,24 @@ const ProductsPage = () => {
       setSelectedproducts(
         products
           .slice()
-          .filter((product) => product.category === selectedCategory)
+          .filter((product) => product.catId === selectedCategory)
 
-          .sort((a, b) => parseInt(b.rating.rate) - parseInt(a.rating.rate))
+          .sort((a, b) => parseInt(b.ratings) - parseInt(a.ratings))
       );
     }
   }
   function filterCategories(value) {
-    setSelectedCategory(value);
-    setSelectedproducts(
-      products.slice().filter((product) => product.category === value)
-    );
+    if (value === "default" || !value) setSelectedproducts(products);
+    else {
+      setSelectedCategory(value);
+      setSelectedproducts(
+        products.slice().filter((product) => product.catId === value)
+      );
+    }
+  }
+  function toggleSelect() {
+    setSelectedproducts(products);
+    setSelectedCategory([]);
   }
 
   return (
@@ -69,21 +72,25 @@ const ProductsPage = () => {
       <DefaultLayout>
         <div className="all__product">
           <hr />
-          {/* <section className="all__products--select--section">
-            <h3 className="selection--header bg-warning">Select</h3>
+          <section className="all__products--select--section">
+            <h3
+              className="selection--header bg-warning"
+              onClick={() => toggleSelect()}
+            >
+              {selectedCategory.length > 1 ? "clear search" : "select"}
+            </h3>
             <ul className="all__categories--list">
-              {categories.map((category, i) => {
+              {childCategories.map((category, i) => {
                 return (
-                  <li key={i} onClick={() => filterCategories(category)}>
-                    {category}
+                  <li key={i} onClick={() => filterCategories(category._id)}>
+                    {category.catName}
                   </li>
                 );
               })}
             </ul>
-          </section> */}
+          </section>
 
           <section className="all__products--section">
-            {/* <h2>Showing result for {selectedCategory} </h2>
             <div className="selection--area">
               <span>
                 select categories
@@ -91,11 +98,11 @@ const ProductsPage = () => {
                   className="categories__selection"
                   onChange={(e) => filterCategories(e.target.value)}
                 >
-                  <option>categories</option>
+                  <option value={"default"}>categories</option>
 
-                  {categories.map((category, i) => (
-                    <option key={i} value={category}>
-                      {category}
+                  {childCategories.map((category, i) => (
+                    <option key={i} value={category._id}>
+                      {category.catName}
                     </option>
                   ))}
                 </select>
@@ -117,10 +124,14 @@ const ProductsPage = () => {
               </span>
             </div>
 
-            <hr /> */}
+            <hr />
 
             <section className="all__products--productsection">
-              {products.map((product) => (
+              {selectedProducts.length === 0 && (
+                <h1>This category donot have any items to display..</h1>
+              )}
+
+              {selectedProducts.map((product) => (
                 <ProductCard
                   product={product}
                   key={product._id}

@@ -51,6 +51,8 @@
   justify-content: center;
   background-color: rgba(194, 40, 40, 0);
   overflow-y: scroll;
+  padding: 20px;
+  width: 100%;
 }
 .all__products--productsection > .product__card {
   width: 100%;
@@ -61,6 +63,7 @@
 .selection--header {
   background-color: #3a474e;
   color: white;
+  cursor: pointer;
 }
 .selection--area {
   display: flex;

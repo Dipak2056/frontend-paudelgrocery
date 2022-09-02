@@ -26,6 +26,9 @@
   background-color: white;
   padding: 5px;
 }
+.all__products--productsection > .product__card {
+  max-height: 400px;
+}
 .explore--more--btn:hover {
   color: white;
   background-color: green;

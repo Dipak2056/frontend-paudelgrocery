@@ -61,7 +61,7 @@ const CartPage = () => {
                   </thead>
                   <tbody>
                     {cart.cartItems?.map((cartItem, i) => (
-                      <tr>
+                      <tr key={i}>
                         <td>{i + 1}</td>
                         <td className="text-center">
                           <div className="d-flex">
@@ -72,7 +72,6 @@ const CartPage = () => {
                                 cartItem.images[0].slice(6)
                               }
                               alt=""
-                              srcset=""
                             />
                             <div className="flex-wrap">
                               <div>{cartItem.name}</div>
