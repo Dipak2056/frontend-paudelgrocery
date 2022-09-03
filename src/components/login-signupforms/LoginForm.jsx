@@ -24,7 +24,12 @@ const LoginForm = () => {
           <input type="checkbox" name="rememberMe" className="checkbox" />{" "}
           Remember me
         </div>
-        <button className="btn btn-lg btn-success loginbutton">Login</button>
+        <button
+          className="btn btn-lg btn-success loginbutton mt-2"
+          type="submit"
+        >
+          Login
+        </button>
       </form>
     </div>
   );
