@@ -95,3 +95,6 @@ code {
   width: 200px;
   height: 19px;
 }
+input {
+  outline: none;
+}

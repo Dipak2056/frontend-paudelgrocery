@@ -11,6 +11,8 @@ import { CategoryLandingPage } from "./pages/categories-landing/CategoryLandingP
 import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { getTotals } from "./pages/cart-page/cart.slice";
+import Loginpage from "./pages/login-signup/Loginpage";
+import SignUpPage from "./pages/login-signup/Signup";
 function App() {
   const dispatch = useDispatch();
   dispatch(getTotals());
@@ -26,6 +28,8 @@ function App() {
             path="/categories/:category"
             element={<CategoryLandingPage />}
           />
+          <Route path="/shop/securelogin" element={<Loginpage />} />
+          <Route path="/shop/signup/one-login" element={<SignUpPage />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>

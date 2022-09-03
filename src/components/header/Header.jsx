@@ -69,12 +69,14 @@ const Header = () => {
                 placeholder="Search products/categories"
               />
             </Nav.Link>
-            <Nav.Link>
-              <div className="login pt-1">
-                <i className="fa-solid fa-user"></i>
-                Login/signin
-              </div>
-            </Nav.Link>
+            <Nav>
+              <Link className="nav-link" to="/shop/securelogin">
+                <div className="login pt-1">
+                  <i className="fa-solid fa-user"></i>
+                  Login/signin
+                </div>
+              </Link>
+            </Nav>
           </Nav>
           <Nav className="cart">
             <Link to="/cart">

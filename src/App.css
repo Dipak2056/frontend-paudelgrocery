@@ -5,12 +5,3 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-.main {
-  min-height: 80vh;
-  padding: 5px;
-  margin-top: 20px;
-}
-Link {
-  text-decoration: none;
-  color: black;
-}
