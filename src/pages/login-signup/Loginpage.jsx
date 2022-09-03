@@ -19,7 +19,7 @@ const Loginpage = () => {
         <div className="login--page__formContainer">
           <p className="login--form__header">Please log in to shop</p>
           <p className="login--form__signUpSuggestion">
-            New to Paudel Groceries?
+            New to Paudel Groceries ?{" "}
             <Link to="/shop/signup/one-login" style={{ color: "green" }}>
               Sign up here
             </Link>

@@ -13,11 +13,11 @@
   text-decoration: underline;
 }
 .login--page__formContainer {
-  padding: 2% 2%;
+  padding: 2% 5%;
   margin: 1em auto;
   background-color: white;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 600px;
 }
 .login--form__header {
   font-weight: 1000;

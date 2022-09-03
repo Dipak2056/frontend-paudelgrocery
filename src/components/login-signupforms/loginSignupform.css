@@ -1,0 +1,15 @@
+input {
+  font-size: 1.2em;
+  width: 100%;
+  border: 1px solid grey;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+
+.checkbox {
+  width: 10%;
+}
+.loginbutton {
+  width: 100%;
+  border-radius: 50px;
+}
