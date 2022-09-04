@@ -12,6 +12,7 @@ import { fetchProductsAction } from "../../pages/LandingPage/products.action";
 const Header = () => {
   const dispatch = useDispatch();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.customer);
   useEffect(() => {
     dispatch(fetchCategoriesAction());
     dispatch(fetchProductsAction());
@@ -70,12 +71,20 @@ const Header = () => {
               />
             </Nav.Link>
             <Nav>
-              <Link className="nav-link" to="/shop/securelogin">
-                <div className="login pt-1">
+              {user.fName ? (
+                <Link className="nav-link" to="/products">
                   <i className="fa-solid fa-user"></i>
-                  Login/signin
-                </div>
-              </Link>
+
+                  {user.fName}
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/shop/securelogin">
+                  <div className="login pt-1">
+                    <i className="fa-solid fa-user"></i>
+                    Login/signin
+                  </div>
+                </Link>
+              )}
             </Nav>
           </Nav>
           <Nav className="cart">

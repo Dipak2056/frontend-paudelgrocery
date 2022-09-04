@@ -13,7 +13,6 @@ export const loginUserAction = (obj) => async (dispatch) => {
   const promiseResponse = loginUser(obj);
   toast.promise(promiseResponse, { pending: "please wait" });
   const { status, message, customer } = await promiseResponse;
-  console.log(status, message);
   const { createdAt, updatedAt, __v, ...rest } = customer;
   if (status === "success") {
     toast[status](message);

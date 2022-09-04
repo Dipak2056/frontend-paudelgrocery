@@ -4,7 +4,7 @@ import { Alert, Button, Spinner } from "react-bootstrap";
 // import { loginUser } from "../../helpers/axioshelper";
 import { loginUserAction } from "./signInUp.action";
 import "./loginSignupform.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const linkStyle = {
   color: "green",
   textDecoration: "underline",
@@ -21,6 +21,7 @@ const initialResponse = {
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.customer);
 
   const [form, setForm] = useState(initialState);
   const [isloading, setIsLoading] = useState(false);
@@ -40,6 +41,7 @@ const LoginForm = () => {
     e.preventDefault();
     setIsLoading(true);
     dispatch(loginUserAction(form));
+    user.fName && navigate("/");
 
     //with out using redux implementation
     // const data = await loginUser(form);
