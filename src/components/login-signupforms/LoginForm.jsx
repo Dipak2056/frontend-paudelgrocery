@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Spinner } from "react-bootstrap";
-import { loginUser } from "../../helpers/axioshelper";
+// import { loginUser } from "../../helpers/axioshelper";
+import { loginUserAction } from "./signInUp.action";
 import "./loginSignupform.css";
+import { useDispatch } from "react-redux";
 const linkStyle = {
   color: "green",
   textDecoration: "underline",
@@ -18,6 +20,8 @@ const initialResponse = {
 };
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState(initialState);
   const [isloading, setIsLoading] = useState(false);
   const [response, setResponse] = useState();
@@ -35,14 +39,18 @@ const LoginForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const data = await loginUser(form);
-    if (data) {
-      setIsLoading(false);
-      navigate("/");
-    } else {
-      setIsLoading(false);
-      setResponse(initialResponse);
-    }
+    dispatch(loginUserAction(form));
+
+    //with out using redux implementation
+    // const data = await loginUser(form);
+    // if (data) {
+    //   setIsLoading(false);
+    //   navigate("/");
+    // } else {
+    //   setIsLoading(false);
+    //   setResponse(initialResponse);
+    // }
+    setIsLoading(false);
   };
 
   return (

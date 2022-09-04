@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Alert, Button, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./loginSignupform.css";
 import { signUpUser } from "../../helpers/axioshelper";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpUserAction } from "./signInUp.action";
 
 const linkStyle = {
   color: "green",
@@ -23,6 +25,10 @@ const SignUpForm = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState(false);
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.customer);
+
   const [response, setResponse] = useState();
   const [isloading, setIsLoading] = useState(false);
 
@@ -43,7 +49,9 @@ const SignUpForm = () => {
     }
     setError(false);
     const { confirmPassword, ...rest } = form;
+
     const { data } = await signUpUser(rest);
+
     if (data.status === "success") {
       setResponse(data);
       setIsLoading(false);
@@ -52,6 +60,7 @@ const SignUpForm = () => {
       setResponse(data.message);
       setIsLoading(false);
     }
+    dispatch(signUpUser(data));
   };
 
   return (
