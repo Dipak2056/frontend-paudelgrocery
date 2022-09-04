@@ -64,7 +64,7 @@ export const signUpUser = async (dataobj) => {
 
 export const loginUser = async (dataobj) => {
   try {
-    const url = customerAPI;
+    const url = customerAPI + "/" + "login";
     return apiProcessor({ method: "post", url, dataobj });
   } catch (error) {
     console.log(error);
