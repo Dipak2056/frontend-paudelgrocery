@@ -1,5 +1,5 @@
 .login--page__body {
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 50px;
   padding: 2% 5%;
 }
