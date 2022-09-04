@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Alert } from "react-bootstrap";
+import { Alert, Button, Spinner } from "react-bootstrap";
 import { loginUser } from "../../helpers/axioshelper";
 import "./loginSignupform.css";
 const linkStyle = {
@@ -19,6 +19,7 @@ const initialResponse = {
 const LoginForm = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(initialState);
+  const [isloading, setIsLoading] = useState(false);
   const [response, setResponse] = useState();
 
   const handleOnChange = (e) => {
@@ -33,8 +34,15 @@ const LoginForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const data = await loginUser(form);
-    data ? navigate("/") : setResponse(initialResponse);
+    if (data) {
+      setIsLoading(false);
+      navigate("/");
+    } else {
+      setIsLoading(false);
+      setResponse(initialResponse);
+    }
   };
 
   return (
@@ -73,11 +81,16 @@ const LoginForm = () => {
             {response.message}
           </Alert>
         )}
-        <input
+        <Button
           className="btn btn-lg btn-success loginbutton mt-2"
           type="submit"
-          value="Login"
-        />
+        >
+          {isloading ? (
+            <Spinner variant="light" animation="border" size="sm"></Spinner>
+          ) : (
+            "Login"
+          )}
+        </Button>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Alert, Button, Spinner } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import "./loginSignupform.css";
 import { signUpUser } from "../../helpers/axioshelper";
 
@@ -20,9 +20,11 @@ const initialState = {
   address: "123 martin street",
 };
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState(false);
   const [response, setResponse] = useState();
+  const [isloading, setIsLoading] = useState(false);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -31,16 +33,25 @@ const SignUpForm = () => {
       [name]: value,
     });
     setError(false);
+    setIsLoading(false);
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (form.password !== form.confirmPassword) {
       return setError(true);
     }
     setError(false);
     const { confirmPassword, ...rest } = form;
     const { data } = await signUpUser(rest);
-    setResponse(data);
+    if (data.status === "success") {
+      setResponse(data);
+      setIsLoading(false);
+      navigate("/shop/securelogin");
+    } else {
+      setResponse(data.message);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -136,15 +147,20 @@ const SignUpForm = () => {
 
         {response && (
           <Alert variant={response.status === "success" ? "success" : "danger"}>
-            {response.message}
+            {response}
             <Link to="/shop/securelogin">Login now</Link>
           </Alert>
         )}
-        <input
+        <Button
           className="btn btn-lg btn-success loginbutton mt-3"
           type="submit"
-          value="Submit"
-        />
+        >
+          {isloading ? (
+            <Spinner variant="light" animation="border" size="sm"></Spinner>
+          ) : (
+            "Submit"
+          )}
+        </Button>
       </form>
     </div>
   );
