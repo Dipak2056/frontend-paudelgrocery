@@ -21,3 +21,11 @@ export const loginUserAction = (obj) => async (dispatch) => {
     toast["danger"](message);
   }
 };
+
+//logout
+export const logOutUser = () => (dispatch) => {
+  dispatch(setUser({}));
+  toast.error(`successfully logged out`, {
+    position: "bottom-left",
+  });
+};

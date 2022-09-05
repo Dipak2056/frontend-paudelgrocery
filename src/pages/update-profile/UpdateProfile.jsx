@@ -3,7 +3,9 @@ import DefaultLayout from "../../components/layouts/DefaultLayout";
 import userImage from "../../images/user.png";
 
 import { Form, Button, Card } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutUser } from "../../components/login-signupforms/signInUp.action";
+import { useNavigate } from "react-router";
 const initialState = {
   fName: "",
   lName: "",
@@ -12,6 +14,8 @@ const initialState = {
   email: "",
 };
 const UpdateProfile = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.customer);
   const [formData, setFormData] = useState(initialState);
   const [showEditForm, setEditForm] = useState(false);
@@ -29,6 +33,11 @@ const UpdateProfile = () => {
   };
   const handleOnEditClick = () => {
     setEditForm(!showEditForm);
+  };
+  const handleOnLogout = () => {
+    alert("are you sure want to logout?");
+    dispatch(logOutUser());
+    navigate("/");
   };
 
   return (
@@ -70,7 +79,11 @@ const UpdateProfile = () => {
                       </Button>
                     )}
 
-                    <Button variant="danger" className="m-1">
+                    <Button
+                      variant="danger"
+                      className="m-1"
+                      onClick={handleOnLogout}
+                    >
                       <i className="fa-solid fa-right-from-bracket"></i>
                       Logout
                     </Button>

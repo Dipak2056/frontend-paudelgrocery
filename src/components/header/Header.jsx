@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { getTotals } from "../../pages/cart-page/cart.slice";
 import { fetchProductsAction } from "../../pages/LandingPage/products.action";
 
+import { logOutUser } from "../login-signupforms/signInUp.action";
 const Header = () => {
   const dispatch = useDispatch();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
@@ -93,7 +94,10 @@ const Header = () => {
 
                     {user.fName}
                   </Link>
-                  <Button variant="grey text-light">
+                  <Button
+                    variant="grey text-light"
+                    onClick={() => dispatch(logOutUser())}
+                  >
                     <i className="fa-solid fa-right-from-bracket"></i>
                   </Button>
                 </div>

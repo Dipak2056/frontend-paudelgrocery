@@ -29,6 +29,28 @@ const CartPage = () => {
   const handleOnIncrease = (cartItem) => {
     dispatch(addToCart(cartItem));
   };
+  const handleOnCheckOut = () => {
+    fetch("http://localhost:9000/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/Json",
+      },
+      body: JSON.stringify({
+        items: [
+          { id: 1, quantity: 3 },
+          { id: 2, quantity: 1 },
+        ],
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => console.error(e.error));
+  };
   return (
     <DefaultLayout>
       <div className="cart__page--container">
@@ -124,7 +146,9 @@ const CartPage = () => {
                     <span className="total">Total:</span>{" "}
                     <span>{cart.cartTotalAmount.toFixed(2)}</span>
                   </div>
-                  <button className="cart-btn">Checkout</button>
+                  <button className="cart-btn" onClick={handleOnCheckOut}>
+                    Checkout
+                  </button>
                 </div>
               </div>
             </>
