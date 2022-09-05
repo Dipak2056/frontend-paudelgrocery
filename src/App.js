@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { getTotals } from "./pages/cart-page/cart.slice";
 import Loginpage from "./pages/login-signup/Loginpage";
 import SignUpPage from "./pages/login-signup/Signup";
+import UpdateProfile from "./pages/update-profile/UpdateProfile";
 function App() {
   const dispatch = useDispatch();
   dispatch(getTotals());
@@ -30,6 +31,7 @@ function App() {
           />
           <Route path="/shop/securelogin" element={<Loginpage />} />
           <Route path="/shop/signup/one-login" element={<SignUpPage />} />
+          <Route path="/customer/update-profile" element={<UpdateProfile />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>

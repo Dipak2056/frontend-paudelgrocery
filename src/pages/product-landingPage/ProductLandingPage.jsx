@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./ProductLandingPage.css";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
@@ -18,7 +18,6 @@ const ProductLandingPage = () => {
 
   const { slug } = useParams();
   const product = products.find((product) => product.slug === slug);
-  const [selectedproduct, setSelectedProduct] = useState(product);
 
   const handleOnAddToCart = (product) => {
     dispatch(addToCart(product));

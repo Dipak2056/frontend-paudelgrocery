@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { signUpUser, loginUser } from "../../helpers/axioshelper";
+import { loginUser } from "../../helpers/axioshelper";
 import { setUser } from "./signInUp.slice";
 
 //signing up

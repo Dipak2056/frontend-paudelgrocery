@@ -16,34 +16,17 @@ export const CategoryLandingPage = () => {
   const parentCategories = categories.filter((item) => !item.parentCatId);
   const childCategories = categories.filter((item) => item.parentCatId);
 
-  let { _id } = parentCategories.find((item) => item.catName === category);
-  let ids = [];
-  childCategories.forEach(
-    (item) => item.parentCatId === _id && ids.push(item._id)
-  );
-
-  const [selectedProducts, setSelectedProduct] = useState(products);
-
-  const findCategorie = (id) => {
-    const founditems = categories.find(
-      (item) => item._id || item.parentCatId === id
-    );
-    console.log(founditems);
-  };
-
-  findCategorie("62b056fd1d3c44dc152ab251");
-
-  let foundProduct = products.filter(
-    (item) => item.catId === "62b0571f1d3c44dc152ab25d"
-  );
-
   useEffect(() => {
+    let { _id } = parentCategories.find((item) => item.catName === category);
+    let ids = [];
+    childCategories.forEach(
+      (item) => item.parentCatId === _id && ids.push(item._id)
+    );
     const getData = async () => {
       const data = await getProductsByParentCatId(ids);
       setDesiredProducts(data);
     };
     getData();
-    setSelectedProduct(foundProduct);
   }, [category]);
 
   return (

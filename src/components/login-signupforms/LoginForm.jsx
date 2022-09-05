@@ -5,6 +5,7 @@ import { Alert, Button, Spinner } from "react-bootstrap";
 import { loginUserAction } from "./signInUp.action";
 import "./loginSignupform.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 const linkStyle = {
   color: "green",
   textDecoration: "underline",
@@ -14,10 +15,11 @@ const initialState = {
   email: "dipendra25@gmail.com",
   password: "dipak1234",
 };
-const initialResponse = {
-  status: "error",
-  message: "Invalid Login Credentials.",
-};
+//implemented for no-redux implementation
+// const initialResponse = {
+//   status: "error",
+//   message: "Invalid Login Credentials.",
+// };
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,7 +43,6 @@ const LoginForm = () => {
     e.preventDefault();
     setIsLoading(true);
     dispatch(loginUserAction(form));
-    user.fName && navigate("/");
 
     //with out using redux implementation
     // const data = await loginUser(form);
@@ -54,6 +55,9 @@ const LoginForm = () => {
     // }
     setIsLoading(false);
   };
+  useEffect(() => {
+    user.fName && navigate("/");
+  }, [user.fName, navigate]);
 
   return (
     <div>

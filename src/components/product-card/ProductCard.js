@@ -27,16 +27,21 @@ export const ProductCard = ({
     navigate("/cart");
   };
 
-  const [img, setImg] = useState();
-  useEffect(() => {
-    const imageskeleton = new Image();
-    imageskeleton.src = images[0];
-    imageskeleton.onload = () => {
-      setTimeout(() => {
-        setImg(imageskeleton);
-      }, 400);
-    };
-  }, [images[0]]);
+  // const [img, setImg] = useState();
+  // useEffect(() => {
+  //   const image = new Image();
+  //   let newimage = "http://localhost:8001/" + images[0];
+  //   console.log(newimage);
+  //   image.src = newimage;
+  //   console.log(image.src.slice(6));
+
+  //   image.onload = () => {
+  //     setTimeout(() => {
+  //       setImg(image);
+  //     }, 400);
+  //   };
+  //   console.log(img);
+  // }, []);
   const findCategorie = (catId) => {
     const item = categories.find((product) => product._id === catId);
     return item.catName;

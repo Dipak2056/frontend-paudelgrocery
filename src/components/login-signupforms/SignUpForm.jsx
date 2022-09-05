@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { Alert, Button, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./loginSignupform.css";
 import { signUpUser } from "../../helpers/axioshelper";
-import { useDispatch, useSelector } from "react-redux";
-import { signUpUserAction } from "./signInUp.action";
+import { useDispatch } from "react-redux";
 
-const linkStyle = {
-  color: "green",
-  textDecoration: "underline",
-  cursor: "pointer",
-};
+//was implemented before
+// const linkStyle = {
+//   color: "green",
+//   textDecoration: "underline",
+//   cursor: "pointer",
+// };
 const initialState = {
   fName: "dipendra",
   lName: "paudel",
@@ -27,7 +27,7 @@ const SignUpForm = () => {
   const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.customer);
+  // const { user } = useSelector((state) => state.customer);
 
   const [response, setResponse] = useState();
   const [isloading, setIsLoading] = useState(false);

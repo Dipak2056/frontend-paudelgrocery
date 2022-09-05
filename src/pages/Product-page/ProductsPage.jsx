@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import { ProductCard } from "../../components/product-card/ProductCard";
 import "./ProductsPage.css";
@@ -10,7 +10,6 @@ const ProductsPage = () => {
   const { products } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
   //to make the subCategories only appear at the aside bar
-  const parentCategories = categories.filter((item) => !item.parentCatId);
   const childCategories = categories.filter((item) => item.parentCatId);
 
   const [selectedProducts, setSelectedproducts] = useState([]);

@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown, Form } from "react-bootstrap";
+import {
+  Container,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Form,
+  Button,
+} from "react-bootstrap";
 import "./header.css";
 import { Link } from "react-router-dom";
 //redux
@@ -63,6 +70,14 @@ const Header = () => {
               })}
             </NavDropdown>
           </Nav>
+          <Nav className="cart">
+            <Link to="/cart">
+              <span className="cart">
+                <i className="fa-solid fa-cart-shopping"></i>
+                <span className="cart__length">{cartTotalQuantity}</span>
+              </span>
+            </Link>
+          </Nav>
           <Nav className="search-login">
             <Nav.Link>
               <Form.Control
@@ -72,11 +87,16 @@ const Header = () => {
             </Nav.Link>
             <Nav>
               {user.fName ? (
-                <Link className="nav-link" to="/products">
-                  <i className="fa-solid fa-user"></i>
+                <div className="d-flex align-items-center">
+                  <Link className="nav-link" to="/customer/update-profile">
+                    <i className="fa-solid fa-user"></i>
 
-                  {user.fName}
-                </Link>
+                    {user.fName}
+                  </Link>
+                  <Button variant="grey text-light">
+                    <i className="fa-solid fa-right-from-bracket"></i>
+                  </Button>
+                </div>
               ) : (
                 <Link className="nav-link" to="/shop/securelogin">
                   <div className="login pt-1">
@@ -86,14 +106,6 @@ const Header = () => {
                 </Link>
               )}
             </Nav>
-          </Nav>
-          <Nav className="cart">
-            <Link to="/cart">
-              <span className="cart">
-                <i className="fa-solid fa-cart-shopping"></i>
-                <span className="cart__length">{cartTotalQuantity}</span>
-              </span>
-            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
