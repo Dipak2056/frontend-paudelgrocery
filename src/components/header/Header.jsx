@@ -16,7 +16,10 @@ import { useEffect } from "react";
 import { getTotals } from "../../pages/cart-page/cart.slice";
 import { fetchProductsAction } from "../../pages/LandingPage/products.action";
 
-import { logOutUser } from "../login-signupforms/signInUp.action";
+import {
+  automaticLogin,
+  logOutUser,
+} from "../login-signupforms/signInUp.action";
 const Header = () => {
   const dispatch = useDispatch();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
@@ -25,6 +28,7 @@ const Header = () => {
     dispatch(fetchCategoriesAction());
     dispatch(fetchProductsAction());
     dispatch(getTotals());
+    dispatch(automaticLogin());
   }, [dispatch]);
   const { categories } = useSelector((state) => state.category);
   const parentCategories = categories

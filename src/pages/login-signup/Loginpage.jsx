@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoginPageLayout from "../../components/layouts/LoginPageLayout";
 import LoginForm from "../../components/login-signupforms/LoginForm";
 import "./login.css";
+import { automaticLogin } from "../../components/login-signupforms/signInUp.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const Loginpage = () => {
+  const { user } = useSelector((state) => state.customer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    !user._id && dispatch(automaticLogin());
+  }, [user._id, dispatch]);
   return (
     <LoginPageLayout>
       <div
