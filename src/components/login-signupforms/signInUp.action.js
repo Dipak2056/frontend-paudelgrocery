@@ -55,8 +55,6 @@ export const automaticLogin = () => async (dispatch) => {
     return;
   } else if (refreshJWT) {
     const token = await requestAccessJWT();
-    token ? dispatch(fetchCustomer()) : dispatch(logOutUser());
-  } else {
-    dispatch(logOutUser());
+    token && dispatch(fetchCustomer());
   }
 };
