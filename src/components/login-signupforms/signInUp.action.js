@@ -12,14 +12,17 @@ export const signUpUserAction = (obj) => async (dispatch) => {
 export const loginUserAction = (obj) => async (dispatch) => {
   const promiseResponse = loginUser(obj);
   toast.promise(promiseResponse, { pending: "please wait" });
-  const { status, message, customer } = await promiseResponse;
-  const { createdAt, updatedAt, __v, ...rest } = customer;
-  if (status === "success") {
-    toast[status](message);
-    status === "success" && dispatch(setUser(rest));
-  } else {
-    toast["danger"](message);
+  //we are going to store access jwt in session and refresh in local
+  const data = await promiseResponse;
+
+  if (data.status === "success") {
+    sessionStorage.setItem("accessJWT", data.accessJWT);
+    localStorage.setItem("refreshJWT", data.refreshJWT);
+    dispatch(setUser(data.customer));
+    toast[data.status](data.message);
   }
+
+  data.status === "error" && toast[data.status](data.message);
 };
 
 //logout
@@ -29,3 +32,5 @@ export const logOutUser = () => (dispatch) => {
     position: "bottom-left",
   });
 };
+//automatic login
+//for this we want to access the access jwt or refresh jwt from the sessionstorage or localstorage

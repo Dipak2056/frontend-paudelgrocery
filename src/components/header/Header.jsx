@@ -35,8 +35,8 @@ const Header = () => {
     <Navbar
       collapseOnSelect
       expand="lg"
-      bg="dark"
-      variant="dark"
+      bg="success"
+      variant="success"
       className="navbar fixed-top"
     >
       <Container>
@@ -51,12 +51,18 @@ const Header = () => {
             <Nav.Link>
               <Link
                 to="/products"
+                className="text-light"
                 style={{ textDecoration: "none", color: "grey" }}
               >
                 Our Products
               </Link>
             </Nav.Link>
-            <NavDropdown title="Categories" id="collasible-nav-dropdown">
+            <NavDropdown
+              title="Categories"
+              className="text-light"
+              id="collasible-nav-dropdown"
+              style={{ color: "white" }}
+            >
               {parentCategories.map((category, index) => {
                 return (
                   <NavDropdown.Item key={index}>
@@ -72,7 +78,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav className="cart">
-            <Link to="/cart">
+            <Link to="/cart" className="nav-link">
               <span className="cart">
                 <i className="fa-solid fa-cart-shopping"></i>
                 <span className="cart__length">{cartTotalQuantity}</span>
@@ -89,7 +95,10 @@ const Header = () => {
             <Nav>
               {user.fName ? (
                 <div className="d-flex align-items-center">
-                  <Link className="nav-link" to="/customer/update-profile">
+                  <Link
+                    className="nav-link text-light"
+                    to="/customer/update-profile"
+                  >
                     <i className="fa-solid fa-user"></i>
 
                     {user.fName}
@@ -102,7 +111,7 @@ const Header = () => {
                   </Button>
                 </div>
               ) : (
-                <Link className="nav-link" to="/shop/securelogin">
+                <Link className="nav-link text-light" to="/shop/securelogin">
                   <div className="login pt-1">
                     <i className="fa-solid fa-user"></i>
                     Login/signin

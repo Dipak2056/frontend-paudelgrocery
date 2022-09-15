@@ -16,7 +16,16 @@ const apiProcessor = async ({ method, url, dataobj }) => {
     return data;
   } catch (error) {
     let message = error.message;
-    console.log(message);
+    if (error.response) {
+      message = error.response.data.message;
+    }
+    // console.log("jglsjgl", status, message, customer);
+    console.log(error, message);
+
+    return {
+      status: "error",
+      message,
+    };
   }
 };
 
@@ -68,5 +77,9 @@ export const loginUser = async (dataobj) => {
     return apiProcessor({ method: "post", url, dataobj });
   } catch (error) {
     console.log(error);
+    return {
+      status: "error",
+      message: error.mesage,
+    };
   }
 };

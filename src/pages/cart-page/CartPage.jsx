@@ -16,6 +16,19 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
+  //lets make items to be posted to stripe server
+  let itemsToBeSent = [];
+  function makeItems() {
+    let items = cart.cartItems;
+    for (let i = 0; i < items.length; i++) {
+      let product = items[i];
+      const _id = product._id;
+      const quantity = product.cartQuantity;
+      itemsToBeSent.push({ _id, quantity });
+    }
+    return itemsToBeSent;
+  }
+
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
@@ -30,16 +43,13 @@ const CartPage = () => {
     dispatch(addToCart(cartItem));
   };
   const handleOnCheckOut = () => {
-    fetch("http://localhost:9000/create-checkout-session", {
+    fetch("http://localhost:8000/api/v1/stripe", {
       method: "POST",
       headers: {
         "Content-Type": "application/Json",
       },
       body: JSON.stringify({
-        items: [
-          { id: 1, quantity: 3 },
-          { id: 2, quantity: 1 },
-        ],
+        items: makeItems(),
       }),
     })
       .then((res) => {
